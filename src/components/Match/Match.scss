@@ -139,21 +139,21 @@ select.announcer {
   min-width: 4rem;
   text-align: center;
   //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-  border-radius: 50% 0 0 0;
+  border-radius: 30% 0 0 0;
 }
 #playerB {
   .sets-won {
     //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-    border-radius: 0 50% 0 0;
+    border-radius: 0 30% 0 0;
   }
 }
 
 .server-wrap {
   position: absolute;
-  bottom: 0;
+  top: .5rem;
   padding: 0.5rem;
 
-  @include media-breakpoint-up(md) {
+  @media (min-width: 720px) {
     & {
       padding: 1rem;
     }
@@ -229,7 +229,10 @@ select.announcer {
   }
   .sets-won {
     font-size: 5rem;
-    min-widhth: 6rem;
+    min-width: 7rem;
+    height: 7rem;
+    padding-top: 1.3rem;
+    color: white;
   }
 }
 @media (max-width: 1100px) {
@@ -250,7 +253,7 @@ select.announcer {
       height: 100%;
       border-top: 10rem solid $primary-color;
       border-left: 7rem solid transparent;
-      left: -7rem;
+      left: -6.9rem;
       top: 0;
     }
     &:after {
@@ -260,7 +263,7 @@ select.announcer {
       height: 100%;
       border-top: 10rem solid $primary-color;
       border-right: 7rem solid transparent;
-      right: -7rem;
+      right: -6.9rem;
       top: 0;
     }
   }

@@ -1,6 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import 'scss/base';
 
-@import '~bootstrap/scss/bootstrap';
+@import 'bootstrap/scss/bootstrap';
 
 
 body {
@@ -42,6 +46,19 @@ html,
 body {
   font-size: 3vw;
   line-height: 1;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"], select {
+  @apply border rounded-full px-3 py-2;
+}
+
+select {
+  @apply pr-6;
 }
 
 @media (min-width: 720px) {

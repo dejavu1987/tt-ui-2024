@@ -3,9 +3,6 @@
     min-width: 2rem;
 }
 
-
-
-
 @media (max-width: 767px) {
     .card-header-sm{
         background: lighten(desaturate($primary-color, 60), 40);
@@ -17,7 +14,8 @@
         border: none;
     }
     table.matches-table tr {
-        box-shadow: $z-depth-1;
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1rem;
     }
     .player-left {
         clear: both;

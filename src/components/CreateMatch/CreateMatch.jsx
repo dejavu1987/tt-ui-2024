@@ -55,28 +55,30 @@ class CreateMatch extends Component {
     return (
       <div className="container py-5">
         <form className="container" onSubmit={this.handleSubmit}>
-          <h2>Create new Match</h2>
-          <div className="row">
-            <div className="col-8">
-              <input
-                name="event"
-                label="Event"
-                icon="trophy"
-                required
-                type="text"
-                value={this.state.event}
-                onChange={this.handleChange}
-              />
-              <input
-                name="stage"
-                label="Stage"
-                icon="sitemap"
-                type="text"
-                value={this.state.stage}
-                onChange={this.handleChange}
-              />
-              <div className="form-group">
-                <div className="form-check form-check-inline">
+          <h2 className="my-10">Create new Match</h2>
+          <div className="row my-10">
+            <div className="col-8 flex flex-col gap-4">
+              <div className="flex gap-4">
+                <input
+                  name="event"
+                  label="Event"
+                  icon="trophy"
+                  required
+                  type="text"
+                  value={this.state.event}
+                  onChange={this.handleChange}
+                />
+                <input
+                  name="stage"
+                  label="Stage"
+                  icon="sitemap"
+                  type="text"
+                  value={this.state.stage}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="flex gap-4 items-center">
+                <div className="flex gap-2 items-center">
                   <input
                     onChange={this.handleChange}
                     className="form-check-input"
@@ -86,11 +88,11 @@ class CreateMatch extends Component {
                     checked={this.state.mode === "1"}
                     value="1"
                   />
-                  <label className="form-check-label" htmlFor="mode1">
+                  <label className="form-check-label mt-1" htmlFor="mode1">
                     Singles
                   </label>
                 </div>
-                <div className="form-check form-check-inline">
+                <div className="flex gap-2 items-center">
                   <input
                     onChange={this.handleChange}
                     className="form-check-input"
@@ -99,19 +101,18 @@ class CreateMatch extends Component {
                     id="mode2"
                     value="2"
                   />
-                  <label className="form-check-label" htmlFor="mode2">
+                  <label className="form-check-label mt-1" htmlFor="mode2">
                     Doubles
                   </label>
                 </div>
               </div>
-              <div className="p-3 mb-3 border border-leftplayer">
-                <div className="form-group">
+              <div className="p-3 mb-3 border border-leftplayer rounded-lg flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
                   <label htmlFor="playerA">PlayerA:</label>
                   <select
                     name="playerA"
                     id="playerA"
                     onChange={this.handleChange}
-                    className="form-control"
                     required
                   >
                     <option value="">Select Player</option>
@@ -126,13 +127,12 @@ class CreateMatch extends Component {
                   </small>
                 </div>
                 {this.state.mode === "2" && (
-                  <div className="form-group">
+                  <div className="flex flex-col gap-1">
                     <label htmlFor="playerC">PlayerC:</label>
                     <select
                       name="playerC"
                       id="playerC"
                       onChange={this.handleChange}
-                      className="form-control"
                     >
                       <option value="">Select Player</option>
                       {this.state.players.map((player) => (
@@ -147,14 +147,13 @@ class CreateMatch extends Component {
                   </div>
                 )}
               </div>
-              <div className="p-3 mb-3 border border-rightplayer">
-                <div className="form-group">
+              <div className="p-3 mb-3 border border-rightplayer rounded-lg  flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
                   <label htmlFor="playerB">PlayerB:</label>
                   <select
                     name="playerB"
                     id="playerB"
                     onChange={this.handleChange}
-                    className="form-control"
                     required
                   >
                     <option value="">Select Player</option>
@@ -169,13 +168,12 @@ class CreateMatch extends Component {
                   </small>
                 </div>
                 {this.state.mode === "2" && (
-                  <div className="form-group">
+                  <div className="flex flex-col gap-1">
                     <label htmlFor="playerD">PlayerD:</label>
                     <select
                       name="playerD"
                       id="playerD"
                       onChange={this.handleChange}
-                      className="form-control"
                     >
                       <option value="">Select Player</option>
                       {this.state.players.map((player) => (
@@ -228,7 +226,10 @@ class CreateMatch extends Component {
             </div>
           </div>
 
-          <button color="primary" type="submit">
+          <button
+            className="button bg-primary text-white px-3 py-2 rounded-full"
+            type="submit"
+          >
             Create Match
           </button>
         </form>

@@ -103,7 +103,6 @@ class Devices extends Component {
                           onSubmit={(event) => this.handleEdit(event, device)}
                         >
                           <input
-                            className="form-control"
                             id="event"
                             type="text"
                             defaultValue={device.linkedMatch}

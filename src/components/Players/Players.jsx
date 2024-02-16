@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import configs from '../../configs';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import configs from "../../configs";
 
-const API = configs.apiUrl + '/api/players';
+const API = configs.apiUrl + "/api/players";
 
 /**
  * Players Component lists players in the system
@@ -20,16 +20,16 @@ const Players = ({ filters, history }) => {
     const newUuid = event.target.children[0].value;
     player.uuid = newUuid;
 
-    fetch(configs.apiUrl + '/api/player/' + player.id, {
-      method: 'POST',
+    fetch(configs.apiUrl + "/api/player/" + player.id, {
+      method: "POST",
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(player),
     })
       .then((res) => res.json())
-      .then((data) => history.push('/players'));
+      .then((data) => history.push("/players"));
   }
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const Players = ({ filters, history }) => {
         <tbody>
           {players.map((player) => {
             return (
-              <tr key={player.id} className={player.over ? 'bg-light' : ''}>
+              <tr key={player.id} className={player.over ? "bg-light" : ""}>
                 <td>
                   <Link to={`/player/${player.id}`}>{player.id}</Link>
                 </td>
@@ -62,7 +62,6 @@ const Players = ({ filters, history }) => {
                     <div className="col-9">
                       <form onSubmit={(event) => handleEdit(event, player)}>
                         <input
-                          className="form-control"
                           id="event"
                           type="text"
                           defaultValue={player.uuid}
