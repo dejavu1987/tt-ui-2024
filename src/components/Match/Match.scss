@@ -1,0 +1,485 @@
+@import '../../scss/base';
+@import '../../scss/nvd3';
+
+//colors
+$white: white;
+$black_30: rgba(0, 0, 0, 0.3);
+$color_amber_approx: #ffc107;
+$color_celeste_approx: #cccccc;
+$black: black;
+$black_10: rgba(0, 0, 0, 0.1);
+
+//fonts
+$font_0: Orbitron;
+$font_1: sans-serif;
+
+//urls
+
+.score-board-wrap {
+  margin-top: -3rem;
+}
+#match-stats {
+  margin-top: -3rem;
+}
+.player-name {
+  padding: 3vh 1rem 2vh;
+}
+.the-winner {
+  border-color: $color_amber_approx !important;
+  .player-name {
+    background-color: $color_amber_approx !important;
+  }
+  .current-points {
+    color: $color_amber_approx !important;
+  }
+  .sets-won {
+    background-color: $color_amber_approx !important;
+  }
+}
+.the-looser {
+  border-color: $color_celeste_approx !important;
+  .player-name {
+    background-color: $color_celeste_approx !important;
+  }
+  .current-points {
+    color: $color_celeste_approx !important;
+  }
+  .sets-won {
+    background-color: $color_celeste_approx !important;
+  }
+}
+
+.slick-track {
+  display: flex;
+  align-items: center;
+}
+
+.slick-slide {
+  opacity: 0.2;
+  transition: opacity 1s;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.slick-active {
+    opacity: 1;
+  }
+}
+.slide {
+  width: 95%;
+  max-width: 100%;
+}
+
+select.announcer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  max-width: 250px;
+}
+
+#match-details {
+  position: relative;
+
+  .col {
+    margin: 0 auto 0;
+    background: $primary-color;
+    color: $white;
+    position: relative;
+    z-index: 10;
+    padding: 2vh 0;
+
+    h2.match-title {
+      font-size: 3vh;
+    }
+    h4.match-stage,
+    h6.match-config {
+      font-size: 2vh;
+    }
+  }
+}
+.h2 {
+  font-family: $font_0, $font_1;
+  font-weight: 100;
+}
+.rematch-btn {
+  position: absolute;
+  right: 5%;
+  top: 1rem;
+  z-index: 12;
+  font-size: 2rem;
+  margin-left: -2.5rem;
+  color: $black;
+  //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  text-shadow: 0.2rem 0.2rem 0.2rem $black_10;
+  cursor: pointer;
+}
+.score-log {
+  margin-left: 1px;
+  font-size: 0;
+  background: gray;
+  flex-grow: 1;
+  opacity: 0.7;
+}
+
+.current-points {
+  font-size: 30vh;
+  padding: 3vh 0 0;
+  text-align: center;
+  //Instead of the line below you could use @include user-select($select)
+  user-select: none;
+  line-height: 1;
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+.sets-won {
+  font-size: 3rem;
+  position: absolute;
+  bottom: 0;
+  padding: 0.5rem 2rem;
+  min-width: 4rem;
+  text-align: center;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 50% 0 0 0;
+}
+#playerB {
+  .sets-won {
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 0 50% 0 0;
+  }
+}
+
+.server-wrap {
+  position: absolute;
+  bottom: 0;
+  padding: 0.5rem;
+
+  @include media-breakpoint-up(md) {
+    & {
+      padding: 1rem;
+    }
+  }
+
+  &--left {
+    left: 6rem;
+    right: auto;
+  }
+  &--right {
+    right: 6rem;
+    left: auto;
+  }
+
+  .serves-left {
+    text-align: center;
+    padding: 1vh;
+    font-size: 2.5vh;
+    color: $white;
+    //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    text-shadow: 1px 1px 2px $black_30;
+    width: 4.4vh;
+    height: 4.4vh;
+  }
+}
+
+#playerA .sets-won {
+  right: 0;
+}
+#scoreboard .fa-crown {
+  font-size: 5rem;
+  position: absolute;
+  top: 10rem;
+  right: 4rem;
+  //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+  transform: rotate(39deg);
+}
+
+.nv-chart svg {
+  min-height: 25rem;
+}
+
+@media (min-width: 130vh) {
+  #scoreboard {
+    flex-direction: row !important;
+    .col-12 {
+      flex: 0 0 50% !important;
+      width: 50% !important;
+    }
+  }
+}
+@media (max-width: 130vh) {
+  .current-points {
+    font-size: 20vh;
+    text-align: center;
+    //Instead of the line below you could use @include user-select($select)
+    user-select: none;
+  }
+  #match-details .col {
+    margin: 0 auto;
+    color: $white;
+    position: relative;
+    z-index: 10;
+    padding: 20px;
+  }
+  #match-stats .player-names {
+    padding-top: 0;
+  }
+}
+@media (min-width: 768px) {
+  .current-points {
+    padding-bottom: 0;
+  }
+  .sets-won {
+    font-size: 5rem;
+    min-widhth: 6rem;
+  }
+}
+@media (max-width: 1100px) {
+  .score-log {
+    font-size: 1rem;
+    margin-right: 2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  #match-details .col {
+    max-width: 38rem;
+    min-height: 10rem;
+    &:before {
+      content: ' ';
+      position: absolute;
+      width: 0;
+      height: 100%;
+      border-top: 10rem solid $primary-color;
+      border-left: 7rem solid transparent;
+      left: -7rem;
+      top: 0;
+    }
+    &:after {
+      content: ' ';
+      position: absolute;
+      width: 0;
+      height: 100%;
+      border-top: 10rem solid $primary-color;
+      border-right: 7rem solid transparent;
+      right: -7rem;
+      top: 0;
+    }
+  }
+}
+@media (min-width: 1900px) {
+  #match-details {
+    margin-bottom: -5rem;
+  }
+}
+
+@media (max-height: 200px) {
+  html {
+    opacity: 0.98;
+  }
+  .player-name.text-light {
+    font-size: 20vh;
+    padding: 10px;
+  }
+
+  div#playerA {
+    flex-direction: row !important;
+  }
+
+  #match-details .col {
+    h2.match-title {
+      font-size: 24px;
+    }
+
+    h4.match-stage,
+    h6.match-config {
+      font-size: 18px;
+    }
+  }
+
+  #match-details .col.text-center {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &::before,
+    &::after {
+      content: '';
+      display: none;
+    }
+  }
+
+  .current-points {
+    font-size: 50vh;
+  }
+
+  .sets-won {
+    font-size: 20px;
+    padding: 5px 17px;
+  }
+
+  .server-wrap .serves-left {
+    font-size: 20vh;
+    width: 32vh;
+    height: 32vh;
+  }
+
+  header,
+  select.announcer,
+  footer {
+    display: none;
+  }
+
+  div#main {
+    padding: 0 !important;
+  }
+
+  .score-log {
+    font-size: 0;
+    background: gray;
+    border-bottom: 1px solid white;
+    flex-grow: 1;
+  }
+
+  #score-log {
+    width: 75px;
+    font-size: 14px;
+    flex-direction: column;
+
+    .fa-undo {
+      position: absolute;
+      right: 12px;
+      top: 4px;
+      z-index: 6;
+      background: white;
+      padding: 5px;
+      opacity: 0.6;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .score-board-wrap {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    justify-items: stretch;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .server-wrap {
+    &--left {
+      left: 20px;
+      right: auto;
+      top: 0;
+      bottom: auto;
+    }
+  }
+
+  #playerA .server-wrap {
+    right: 20px;
+    left: auto;
+    top: 0;
+    bottom: auto;
+  }
+
+  #match-details {
+    flex-grow: 1;
+  }
+
+  #scoreboard {
+    flex-grow: 3;
+  }
+
+  .d-flex.justify-content-left.border-bottom.p-4.overflow-auto {
+    flex-grow: 1;
+  }
+
+  #match-stats {
+    flex-direction: row;
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100vw;
+
+    .player-names {
+      flex-grow: 1;
+      margin: 0 !important;
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      div {
+        flex-grow: 1;
+      }
+    }
+
+    .player-name {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #match-details {
+      margin: 0;
+      padding: 0;
+    }
+
+    .text-center {
+      flex-grow: 1;
+      max-width: 33%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h3 {
+      font-size: 14px;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    .charts {
+      max-width: 33%;
+      flex-grow: 0.5;
+    }
+
+    .nv-chart {
+      position: relative;
+      bottom: 0;
+      height: 80vh;
+    }
+
+    .statistics {
+      font-size: 17px;
+      padding: 5px 0;
+    }
+
+    .col-12.col-md-6.col-xl {
+      font-size: 17px;
+    }
+
+    .vs {
+      width: 80px;
+      height: 80px;
+      top: calc(50% - 40px);
+    }
+
+    .col-lg-7.offset-lg-5.player-name.text-light.bg-rightplayer.h2.text-right.px-5 {
+      padding: 7px;
+    }
+
+    .text-center {
+      background: $primary-color;
+    }
+  }
+}

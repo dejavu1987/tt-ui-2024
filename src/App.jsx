@@ -1,35 +1,150 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Component } from "react";
+import "./App.scss";
+import { Route } from "react-router-dom";
+import CreateMatch from "./components/CreateMatch/CreateMatch";
+import Matches from "./components/Matches/Matches";
+import Match from "./components/Match/Match";
+import Devices from "./components/Devices/Devices";
+import Players from "./components/Players/Players";
+import Tournaments from "./components/Tournaments/Tournaments";
+import Tournament from "./components/Tournament/Tournament";
+import Player from "./components/Player/Player";
+import { socketSubscriber } from "./SocketSubscriber";
+import configs from "./configs";
+import VersusPage from "./pages/Versus/VersusPage";
+import MainLayout from "./layouts/MainLayout";
+import PlayerForm from "./components/PlayerForm/PlayerForm";
+const API_PLAYERS = configs.apiUrl + "/api/players";
 
-function App() {
-  const [count, setCount] = useState(0)
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.socketSubscriber = socketSubscriber;
+    this.socketSubscriber.addHandlers({
+      "device joined match": (matchId) => {
+        this.props.history.push("/match/" + matchId);
+        console.log("device joined the match: ", matchId);
+      },
+    });
+    const defaultDevice = localStorage.getItem("defaultDevice");
+    if (defaultDevice) {
+      console.log("Following device: " + defaultDevice);
+      this.socketSubscriber.socket.emit("follow device", defaultDevice);
+    }
+  }
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+  componentDidMount() {
+    fetch(API_PLAYERS)
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("players", JSON.stringify(data.players));
+      });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Route
+          path="/"
+          exact={true}
+          render={(routeProps) => (
+            <MainLayout>
+              <div className="container-fluid" id="match-list">
+                {/* <h2 className="pb-5">Latest Match</h2>
+              <Match id="latest"></Match> */}
+                <h2>Matches</h2>
+                <Matches {...routeProps} />
+              </div>
+            </MainLayout>
+          )}
+        />
+        <Route
+          path="/create-match"
+          render={() => (
+            <MainLayout>
+              <CreateMatch />
+            </MainLayout>
+          )}
+        />
+        <Route
+          path="/match/:id"
+          render={(routeProps) => (
+            <MainLayout>
+              <Match id={routeProps.match.params.id}></Match>
+            </MainLayout>
+          )}
+        />
+        <Route
+          path="/versus/:playerA/:playerB/:playerC?/:playerD?"
+          render={(routeProps) => (
+            <VersusPage players={routeProps.match.params}></VersusPage>
+          )}
+        />
+        <Route
+          path="/latest-match"
+          render={() => <Match id="latest"></Match>}
+        />
+        <Route
+          path="/devices"
+          render={() => (
+            <MainLayout>
+              <Devices />
+            </MainLayout>
+          )}
+        />
+        <Route
+          path="/players"
+          render={() => (
+            <MainLayout>
+              <Players />
+            </MainLayout>
+          )}
+        />
+        <Route
+          exact
+          path="/create/player"
+          render={() => (
+            <MainLayout>
+              <PlayerForm />
+            </MainLayout>
+          )}
+        />
+        <Route
+          exact
+          path="/edit/player/:id"
+          render={(routeProps) => (
+            <MainLayout>
+              <PlayerForm id={routeProps.match.params.id} />
+            </MainLayout>
+          )}
+        />
+        <Route
+          path="/player/:id"
+          render={(routeProps) => (
+            <MainLayout>
+              <Player id={routeProps.match.params.id}></Player>
+            </MainLayout>
+          )}
+        />
+        <Route
+          path="/tournaments"
+          render={() => (
+            <MainLayout>
+              <Tournaments />
+            </MainLayout>
+          )}
+        />
+        <Route
+          path="/tournament/:id"
+          render={(routeProps) => (
+            <MainLayout>
+              <Tournament id={routeProps.match.params.id}></Tournament>
+            </MainLayout>
+          )}
+        />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    );
+  }
 }
 
-export default App
+export default App;

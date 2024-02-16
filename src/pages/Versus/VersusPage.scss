@@ -1,0 +1,58 @@
+.page--versus {
+  color: white;
+
+  .versus {
+    .player-name {
+      font-size: 5vw;
+      text-align: center;
+    }
+    .vs {
+      width: 15vw;
+      height: 15vw;
+      margin-top: -7.5vw;
+      margin-left: -7.5vw;
+    }
+  }
+
+  .player-detail-card {
+    padding: 20px;
+    color: white;
+    height: calc(100vh - 22vw);
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.4), transparent);
+
+    .slick-slider {
+      width: 100%;
+    }
+
+    .row {
+      margin-bottom: 20px;
+    }
+
+    td,
+    th {
+      color: white;
+      font-size: 2vw;
+    }
+
+    &.bg-rightplayer {
+      background: linear-gradient(-45deg, rgba(0, 0, 0, 0.4), transparent);
+    }
+  }
+  .card {
+    background: rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  }
+  h3 {
+    font-size: 3vw;
+    margin-bottom: 20px;
+  }
+  .card-header {
+    font-size: 1.7vw;
+    white-space: nowrap;
+  }
+}

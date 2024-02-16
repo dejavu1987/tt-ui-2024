@@ -1,0 +1,37 @@
+$theme-colors: (
+        "primary": $primary-color,
+        "secondary": $secondary-color,
+        "leftplayer": $leftplayer-color,
+        "rightplayer": $rightplayer-color
+);
+
+$headings-font-family: 'DM Sans';
+
+$enable-rounded: false;
+
+
+// Grid breakpoints
+
+$grid-breakpoints: (
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px
+);
+
+// Grid containers
+
+$container-max-widths: (
+        sm: 540px,
+        md: 720px,
+        lg: 960px,
+        xl: 1140px
+);
+
+$image-path: "./img";
+
+$font-family-sans-serif: 'sans-serif';
+$font-family-base: 'DM Sans';
+
+$spinner-vertical-align: top;

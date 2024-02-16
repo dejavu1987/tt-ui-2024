@@ -1,0 +1,5 @@
+Throbber example:
+
+```js
+<Throbber/>
+```

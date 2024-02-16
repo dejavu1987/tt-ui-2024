@@ -1,0 +1,52 @@
+@import 'scss/base';
+
+@import '~bootstrap/scss/bootstrap';
+
+
+body {
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+footer {
+  @include gradient-header-footer;
+}
+
+.nav-link {
+  padding: 1.2rem 0;
+}
+
+.text-light a {
+  color: #cde8ff !important;
+}
+
+.text-leftplayer a {
+  color: $leftplayer-color !important;
+}
+.text-rightplayer a {
+  color: $rightplayer-color !important;
+}
+
+.btn.btn-sm.dot {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.2rem;
+}
+
+/*------------------------------*/
+
+html,
+body {
+  font-size: 3vw;
+  line-height: 1;
+}
+
+@media (min-width: 720px) {
+  html,
+  body {
+    font-size: 1.5vh;
+  }
+}

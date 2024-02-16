@@ -1,0 +1,634 @@
+@import "colors";
+@import "variables";
+//colors
+$black: #000;
+$mercury: #e5e5e5;
+$color_regent_st_blue_approx: lightblue;
+$black_100: rgba(0,0,0,1);
+$white: #fff;
+$color_storm_dust_approx: #666;
+$color_gallery_approx: #eee;
+$color_alto_approx: #ddd;
+$color_celeste_approx: #ccc;
+$color_mountain_mist_approx: #999;
+$color_pink_swan_approx: #bababa;
+$color_forest_green_approx: #2ca02c;
+$color_persian_red_approx: #d62728;
+$color_mine_shaft_approx: #333;
+$color_silver_chalice_approx: #aaa;
+$black_20: rgba(0,0,0,.2);
+$gray: gray;
+$color_scooter_59_approx: rgba(19, 196, 249, 0.59);
+$color_bittersweet_approx: #f66;
+$white_80: rgba(255,255,255, 0.8);
+$black_50: rgba(0,0,0,0.5);
+$color_black_haze_75_approx: rgba(247,247,247,0.75);
+$color_cararra_approx: #ebebeb;
+$color_shady_lady_approx: darkgray;
+
+
+//@extend-elements
+//original selectors
+//.nvd3 .nv-discretebar .nv-groups text, .nvd3 .nv-multibarHorizontal .nv-groups text
+%extend_1 {
+  font-weight: bold;
+  fill: $black_100;
+  stroke: rgba(0,0,0,0);
+}
+
+//original selectors
+//.nvd3.nv-scatter .nv-groups .nv-point.hover, .nvd3 .nv-groups .nv-point.hover
+%extend_2 {
+  stroke-width: 7px;
+  fill-opacity: .95 !important;
+  stroke-opacity: .95 !important;
+}
+
+
+.nvd3 {
+  .nv-axis {
+    pointer-events: none;
+    opacity: 1;
+    path {
+      fill: none;
+      stroke: $black;
+      stroke-opacity: .75;
+      shape-rendering: crispEdges;
+      &.domain {
+        stroke-opacity: .75;
+      }
+    }
+    line {
+      fill: none;
+      stroke: $mercury;
+      shape-rendering: crispEdges;
+      &.zero {
+        stroke-opacity: .75;
+      }
+    }
+    &.nv-disabled {
+      opacity: 0;
+    }
+    &.nv-x path.domain {
+      stroke-opacity: 0;
+    }
+    .zero line {
+      stroke-opacity: .75;
+    }
+    .nv-axisMaxMin text {
+      font-weight: bold;
+    }
+  }
+  .nv-bars {
+    rect {
+      fill-opacity: .75;
+      //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+      transition: fill-opacity 250ms linear;
+      &.hover {
+        fill-opacity: 1;
+      }
+    }
+    .hover {
+      rect {
+        fill: $color_regent_st_blue_approx;
+      }
+      text {
+        fill: $black_100;
+      }
+    }
+    text {
+      fill: rgba(0,0,0,0);
+    }
+  }
+  .nv-boxplot {
+    circle {
+      fill-opacity: 0.5;
+      &:hover {
+        fill-opacity: 1;
+      }
+    }
+    rect:hover {
+      fill-opacity: 1;
+    }
+  }
+  line {
+    &.nv-boxplot-median {
+      stroke: $black;
+    }
+    &.nv-guideline {
+      stroke: $color_celeste_approx;
+    }
+  }
+  &.nv-bullet {
+    font: 10px $font-family-sans-serif;
+    .nv-measure {
+      fill-opacity: .8;
+      &:hover {
+        fill-opacity: 1;
+      }
+    }
+    .nv-marker {
+      stroke: $black;
+      stroke-width: 2px;
+    }
+    .nv-markerTriangle {
+      stroke: $black;
+      fill: $white;
+      stroke-width: 1.5px;
+    }
+    .nv-markerLine {
+      stroke: $black;
+      stroke-width: 1.5px;
+    }
+    .nv-range {
+      fill: $color_pink_swan_approx;
+      fill-opacity: .4;
+      &.nv-s0 {
+        fill: $color_gallery_approx;
+      }
+      &.nv-s1 {
+        fill: $color_alto_approx;
+      }
+      &.nv-s2 {
+        fill: $color_celeste_approx;
+      }
+      &:hover {
+        fill-opacity: .7;
+      }
+    }
+    .nv-title {
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .nv-subtitle {
+      fill: $color_mountain_mist_approx;
+    }
+    .nv-tick line {
+      stroke: $color_storm_dust_approx;
+      stroke-width: .5px;
+    }
+  }
+  .nv-legend {
+    .nv-disabled {
+      rect {
+      }
+      circle {
+        fill-opacity: 0;
+      }
+    }
+    .nv-series {
+      cursor: pointer;
+    }
+  }
+  .nv-check-box {
+    .nv-box {
+      fill-opacity: 0;
+      stroke-width: 2;
+    }
+    .nv-check {
+      fill-opacity: 0;
+      stroke-width: 4;
+    }
+  }
+  .nv-groups {
+    path {
+      &.nv-line {
+        fill: none;
+      }
+      &.nv-area {
+        stroke: none;
+      }
+    }
+    .nv-point.hover {
+      @extend %extend_2;
+      stroke-width: 20px;
+      stroke-opacity: .5;
+    }
+  }
+  &.nv-scatter {
+    &.nv-single-point .nv-groups .nv-point {
+      fill-opacity: .5 !important;
+      stroke-opacity: .5 !important;
+    }
+    .nv-groups .nv-point.hover {
+      @extend %extend_2;
+    }
+  }
+  .nv-indexLine {
+    cursor: ew-resize;
+  }
+  text {
+    font: normal 12px $font-family-base, $font-family-sans-serif;
+  }
+  .title {
+    font: bold 14px $font-family-base, $font-family-sans-serif;
+  }
+  .nv-background {
+    fill: $white;
+    fill-opacity: 0;
+  }
+  &.nv-noData {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  &.nv-pie {
+    path {
+      stroke-opacity: 0;
+      //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+      transition: fill-opacity 250ms linear, stroke-width 250ms linear, stroke-opacity 250ms linear;
+      stroke: $white;
+      stroke-width: 1px;
+      stroke-opacity: 1;
+      fill-opacity: .7;
+    }
+    .nv-pie-title {
+      font-size: 24px;
+      fill: $color_scooter_59_approx;
+    }
+    .nv-label {
+      pointer-events: none;
+      rect {
+        fill-opacity: 0;
+        stroke-opacity: 0;
+      }
+    }
+    .nv-slice text {
+      stroke: $black;
+      stroke-width: 0;
+    }
+    .hover path {
+      fill-opacity: 1;
+    }
+  }
+  &.nv-sparklineplus {
+    pointer-events: all;
+    g {
+      pointer-events: all;
+      &.nv-hoverValue {
+        pointer-events: none;
+      }
+    }
+    .nv-xValue {
+      stroke-width: 0;
+      font-size: .9em;
+      font-weight: normal;
+    }
+    .nv-yValue {
+      stroke-width: 0;
+      font-size: .9em;
+      font-weight: normal;
+      stroke: $color_bittersweet_approx;
+    }
+    .nv-maxValue {
+      stroke: $color_forest_green_approx;
+      fill: $color_forest_green_approx;
+    }
+    .nv-minValue {
+      stroke: $color_persian_red_approx;
+      fill: $color_persian_red_approx;
+    }
+    .nv-currentValue {
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    .nv-hoverValue line {
+      stroke: $color_mine_shaft_approx;
+      stroke-width: 1.5px;
+    }
+  }
+  .nv-hoverArea {
+    fill-opacity: 0;
+    stroke-opacity: 0;
+  }
+  &.nv-stackedarea {
+    path.nv-area {
+      fill-opacity: .7;
+      stroke-opacity: 0;
+      //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+      transition: fill-opacity 250ms linear, stroke-opacity 250ms linear;
+      &.hover {
+        fill-opacity: .9;
+      }
+    }
+    .nv-groups .nv-point {
+      stroke-opacity: 0;
+      fill-opacity: 0;
+    }
+  }
+  .nv-interactiveGuideLine {
+    pointer-events: none;
+  }
+  .x .nv-axis .nv-axisMaxMin text {
+    text-anchor: middle;
+  }
+  .x2 .nv-axis .nv-axisMaxMin text {
+    text-anchor: middle;
+  }
+  .x3 .nv-axis .nv-axisMaxMin text {
+    text-anchor: middle;
+  }
+  .nv-multibar .nv-groups rect {
+    stroke-opacity: 0;
+    //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+    transition: fill-opacity 250ms linear;
+    &:hover {
+      fill-opacity: 1;
+    }
+  }
+  .nv-multibarHorizontal .nv-groups {
+    rect {
+      stroke-opacity: 0;
+      //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+      transition: fill-opacity 250ms linear;
+      &:hover {
+        fill-opacity: 1;
+      }
+    }
+    text {
+      @extend %extend_1;
+    }
+  }
+  .nv-discretebar .nv-groups {
+    rect {
+      stroke-opacity: 0;
+      //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+      transition: fill-opacity 250ms linear;
+      &:hover {
+        fill-opacity: 1;
+      }
+    }
+    text {
+      @extend %extend_1;
+    }
+  }
+  .nv-candlestickBar .nv-ticks rect:hover {
+    fill-opacity: 1;
+  }
+  &.nv-candlestickBar .nv-ticks {
+    .nv-tick {
+      stroke-width: 1px;
+      &.hover {
+        stroke-width: 2px;
+      }
+      &.positive rect {
+        stroke: $color_forest_green_approx;
+        fill: $color_forest_green_approx;
+      }
+      &.negative rect {
+        stroke: $color_persian_red_approx;
+        fill: $color_persian_red_approx;
+      }
+    }
+    line {
+      stroke: $color_mine_shaft_approx;
+    }
+  }
+  .nv-series.nv-disabled .nv-check-box .nv-check {
+    fill-opacity: 0;
+    stroke-opacity: 0;
+  }
+  .nv-controlsWrap .nv-legend .nv-check-box .nv-check {
+    opacity: 0;
+  }
+  &.nv-linePlusBar .nv-bar rect {
+    fill-opacity: .75;
+    &:hover {
+      fill-opacity: 1;
+    }
+  }
+  &.nv-line .nvd3.nv-scatter .nv-groups .nv-point {
+    fill-opacity: 0;
+    stroke-opacity: 0;
+  }
+  .nv-point-paths path {
+    stroke: $color_silver_chalice_approx;
+    stroke-opacity: 0;
+    fill: $color_gallery_approx;
+    fill-opacity: 0;
+  }
+  .nv-brush .extent {
+    fill-opacity: 0 !important;
+  }
+  .nv-brushBackground rect {
+    stroke: $black;
+    stroke-width: .4;
+    fill: $white;
+    fill-opacity: .7;
+  }
+  &.nv-ohlcBar .nv-ticks .nv-tick {
+    stroke-width: 1px;
+    &.hover {
+      stroke-width: 2px;
+    }
+    &.positive {
+      stroke: $color_forest_green_approx;
+    }
+    &.negative {
+      stroke: $color_persian_red_approx;
+    }
+  }
+  .background path {
+    fill: none;
+    stroke: $color_gallery_approx;
+    stroke-opacity: .4;
+    shape-rendering: crispEdges;
+  }
+  .foreground path {
+    fill: none;
+    stroke-opacity: .7;
+  }
+  .nv-parallelCoordinates-brush .extent {
+    fill: $white;
+    fill-opacity: .6;
+    stroke: $gray;
+    shape-rendering: crispEdges;
+  }
+  .nv-parallelCoordinates .hover {
+    fill-opacity: 1;
+    stroke-width: 3px;
+  }
+  .missingValuesline line {
+    fill: none;
+    stroke: $black;
+    stroke-width: 1;
+    stroke-opacity: 1;
+    stroke-dasharray: 5, 5;
+  }
+  .nv-scatter .nv-point.hover {
+    fill-opacity: 1;
+  }
+  &.nv-sparkline path {
+    fill: none;
+  }
+}
+.with-transitions {
+  .nvtooltip {
+    //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+    transition: opacity 50ms linear;
+    //Instead of the line below you could use @include transition-delay($delay-1, $delay-2, $delay-3, $delay-4, $delay-5, $delay-6, $delay-7, $delay-8, $delay-9, $delay-10)
+    transition-delay: 200ms;
+  }
+  .nv-candlestickBar .nv-ticks .nv-tick {
+    //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+    transition: stroke-width 250ms linear, stroke-opacity 250ms linear;
+  }
+  .nvd3 .nv-groups .nv-point {
+    //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+    transition: stroke-width 250ms linear, stroke-opacity 250ms linear;
+  }
+}
+.nv-force-node {
+  stroke: $white;
+  stroke-width: 1.5px;
+  text {
+    stroke-width: 0;
+  }
+}
+.nv-force-link {
+  stroke: $color_mountain_mist_approx;
+  stroke-opacity: .6;
+}
+.nvtooltip {
+  position: absolute;
+  background-color: rgba(255,255,255,1.0);
+  color: rgba(0,0,0,1.0);
+  padding: 1px;
+  border: 1px solid $black_20;
+  z-index: 10000;
+  display: block;
+  font-family: $font-family-base, $font-family-sans-serif;
+  font-size: 13px;
+  text-align: left;
+  pointer-events: none;
+  white-space: nowrap;
+  //Instead of the line below you could use @include user-select($select)
+  user-select: none;
+  background: $white_80;
+  border: 1px solid $black_50;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 4px;
+  &.with-3d-shadow {
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 0 5px 10px $black_20;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 5px;
+  }
+  &.with-transitions {
+    //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+    transition: opacity 50ms linear;
+    //Instead of the line below you could use @include transition-delay($delay-1, $delay-2, $delay-3, $delay-4, $delay-5, $delay-6, $delay-7, $delay-8, $delay-9, $delay-10)
+    transition-delay: 200ms;
+  }
+  &.x-nvtooltip {
+    padding: 8px;
+  }
+  &.y-nvtooltip {
+    padding: 8px;
+  }
+  h3 {
+    margin: 0;
+    padding: 4px 14px;
+    line-height: 18px;
+    font-weight: normal;
+    background-color: $color_black_haze_75_approx;
+    color: rgba(0,0,0,1.0);
+    text-align: center;
+    border-bottom: 1px solid $color_cararra_approx;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 5px 5px 0 0;
+  }
+  p {
+    margin: 0;
+    padding: 5px 14px;
+    text-align: center;
+  }
+  span {
+    display: inline-block;
+    margin: 2px 0;
+  }
+  table {
+    margin: 6px;
+    border-spacing: 0;
+    td {
+      padding: 2px 9px 2px 0;
+      vertical-align: middle;
+      &.key {
+        font-weight: normal;
+        &.total {
+          font-weight: bold;
+        }
+      }
+      &.value {
+        text-align: right;
+        font-weight: bold;
+      }
+      &.percent {
+        color: $color_shady_lady_approx;
+      }
+      &.legend-color-guide div {
+        width: 8px;
+        height: 8px;
+        vertical-align: middle;
+        width: 12px;
+        height: 12px;
+        border: 1px solid $color_mountain_mist_approx;
+      }
+    }
+    tr.highlight td {
+      padding: 1px 9px 1px 0;
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+      border-top-style: solid;
+      border-top-width: 1px;
+    }
+  }
+  .footer {
+    padding: 3px;
+    text-align: center;
+  }
+}
+.nv-brush {
+  .extent {
+    fill-opacity: .125;
+    shape-rendering: crispEdges;
+  }
+  .resize path {
+    fill: $color_gallery_approx;
+    stroke: $color_storm_dust_approx;
+  }
+}
+@media print {
+  .nvd3 text {
+    stroke-width: 0;
+    fill-opacity: 1;
+  }
+}
+.nv-noninteractive {
+  pointer-events: none;
+}
+.nv-distx {
+  pointer-events: none;
+}
+.nv-disty {
+  pointer-events: none;
+}
+.nvtooltip-pending-removal {
+  pointer-events: none;
+  display: none;
+}
+.nv-boxplot-tick:hover {
+  stroke-width: 2.5px;
+}
+svg.nvd3-svg {
+  //Instead of the line below you could use @include user-select($select)
+  user-select: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.with-3d-shadow .nvtooltip {
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: 0 5px 10px $black_20;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 5px;
+}
