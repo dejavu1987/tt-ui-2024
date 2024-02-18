@@ -1,5 +1,5 @@
-import React from 'react';
-import './Versus.scss';
+import React from "react";
+import "./Versus.scss";
 
 function Versus({
   players: { playerA, playerB, playerC, playerD },
@@ -8,10 +8,10 @@ function Versus({
 }) {
   return (
     <div className="versus position-relative">
-      <div className="col-lg-7 player-name text-light h2 leftplayer px-5">
+      <div className="col-lg-7 player-name text-light text-2xl leftplayer px-5">
         <div className="player-name__content">
           {playerA}
-          {playerC && ' & ' + playerC}
+          {playerC && " & " + playerC}
           <span className="mx-5 d-inline-block">
             {sets && <>[ {sets[0]} ]</>}
           </span>
@@ -30,7 +30,7 @@ function Versus({
             {sets && <>[ {sets[1]} ]</>}
           </span>
           {playerB}
-          {playerD && ' & ' + playerD}
+          {playerD && " & " + playerD}
         </div>
       </div>
     </div>

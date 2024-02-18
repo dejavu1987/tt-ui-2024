@@ -1,27 +1,15 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import "./Header.scss";
 
 function Header() {
   return (
     <header>
-      <nav className="navbar navbar-expand-lg navbar-dark">
+      <nav className="flex justify-between">
         <Link className="navbar-brand" to="/">
           <i className="fa fas fa-table-tennis"></i> PiMP
         </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarText"
-          aria-controls="navbarText"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className=" navbar-collapse" id="navbarText">
-          <ul className="navbar-nav mr-auto">
+
+        <div className="flex" id="navbarText">
+          <ul className="flex mr-auto">
             <li className="nav-item mx-3">
               <Link className="nav-link" to="/devices">
                 Manage Devices
@@ -38,10 +26,10 @@ function Header() {
               </Link>
             </li>
           </ul>
-          <ul className="navbar-nav">
+          <ul className="flex">
             <li className="nav-item mx-3">
               <Link
-                className="nav-link btn-md btn-md-primary"
+                className=" bg-white text-primary px-6 py-1 rounded-full"
                 to="/create-match"
               >
                 Create New Match

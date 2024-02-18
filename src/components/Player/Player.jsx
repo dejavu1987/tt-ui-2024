@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import configs from "../../configs";
 import Matches from "../Matches/Matches";
 import Throbber from "../Throbber/Throbber";
@@ -80,28 +80,25 @@ class Player extends Component {
     const player = this.state.player;
     const stats = this.state.stats;
     return this.state.loaded ? (
-      <div className="container-fluid" id="player-info">
-        <h1>
-          {player.name} <span className="text-muted">({player.id})</span>
-        </h1>
-        <div className="mt-5">
-          <div md="6" lg="2">
+      <div className="p-2" id="player-info">
+        <div className="md:flex items-end gap-4">
+          <div className="md:w-1/2">
             <img
               className="mt-4 pt-3"
               src={
                 player.photo ||
-                "https://mk0gamingweekenv48ev.kinstacdn.com/wp-content/uploads/2017/09/guyplayingpingpong_mini.jpg"
+                "https://res.cloudinary.com/anilmaharjan-com-np/image/upload/v1708244355/tt-pp.png"
               }
               alt=""
               width="100%"
             />
           </div>
-          <div md="6" lg="3">
-            <h3>Profile</h3>
-            <ul>
-              <li>
-                <b>Nationality: </b>
-                <Flag country={player.nationality} size={16} />
+          <div className="md:w-1/2">
+            <h1 className="h2 text-8xl mt-5">{player.fullName}</h1>
+            <ul className="text-lg">
+              <li className="flex gap-2 my-2">
+                <span className="text-6xl uppercase">{player.nationality}</span>
+                <Flag country={player.nationality} size={32} />
               </li>
               <li>
                 <b>Profession: </b>
@@ -122,26 +119,26 @@ class Player extends Component {
                 {player.hobbies}
               </li>
             </ul>
-          </div>
-          <div lg="7">
-            <h3>Basic Stats</h3>
-            <div className="text-center">
-              <div>
-                <div className="text-primary">
-                  <div>Matches Played</div>
-                  <div className="display-1 h1">{stats.matchesCnt}</div>
-                </div>
-              </div>
-              <div>
-                <div className="text-success">
-                  <div>Matches Won</div>
-                  <div className="display-1 h1">{stats.wins}</div>
-                </div>
-              </div>
-              <div>
+            <div className="mt-5">
+              <h3 className="text-2xl">Basic Stats</h3>
+              <div className="flex justify-between w-full mt-4 text-center">
                 <div>
-                  <div>Sets Won</div>
-                  <div className="display-1 h1">{stats.setWins}</div>
+                  <div className="text-primary">
+                    <div>Matches Played</div>
+                    <div className="display-1 h1">{stats.matchesCnt}</div>
+                  </div>
+                </div>
+                <div>
+                  <div className="text-success">
+                    <div>Matches Won</div>
+                    <div className="display-1 h1">{stats.wins}</div>
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <div>Sets Won</div>
+                    <div className="display-1 h1">{stats.setWins}</div>
+                  </div>
                 </div>
               </div>
             </div>

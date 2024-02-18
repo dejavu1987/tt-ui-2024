@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import "slick-carousel/slick/slick.scss";
 import "slick-carousel/slick/slick-theme.scss";
 
@@ -246,7 +246,7 @@ class Match extends Component {
                 </option>
               ))}
             </select>
-            <div className="d-flex align-items-center" id="match-details">
+            <div className="flex items-center" id="match-details">
               <div className="col text-center">
                 <h2 className="match-title h2">{match.event}</h2>
                 <h4 className="match-stage">{match.stage}</h4>
@@ -256,10 +256,7 @@ class Match extends Component {
                 </h6>
               </div>
             </div>
-            <div
-              className="d-flex flex-column d-sm-flex flex-sm-row"
-              id="scoreboard"
-            >
+            <div className="flex flex-col sm:flex sm:flex-row" id="scoreboard">
               <div
                 className={`relative col-12 col-sm-6 flex-column px-0 border-leftplayer border ${
                   match.winner === 0 && "the-winner"
@@ -288,10 +285,10 @@ class Match extends Component {
                   >
                     {new Array(match.serves[1]).fill().map((d, i) => (
                       <div
-                        className="serves-left rounded-circle bg-info float-left mx-2"
+                        className="serves-left rounded-circle bg-primary"
                         key={i}
                       >
-                        <i className="fa fas fa-table-tennis"> </i>
+                        <i className="fa fas fa-table-tennis self-center"> </i>
                       </div>
                     ))}
                   </div>
@@ -319,16 +316,16 @@ class Match extends Component {
                 {(match.serves[0] === 2 || match.serves[0] === 4) && (
                   <div
                     className={
-                      "server-wrap server-wrap--" +
+                      "flex server-wrap server-wrap--" +
                       (match.serves[0] === 2 ? "left" : "right")
                     }
                   >
                     {new Array(match.serves[1]).fill().map((d, i) => (
                       <div
-                        className="serves-left rounded-circle bg-info float-right mx-2"
+                        className="flex serves-left rounded-circle bg-primary"
                         key={i}
                       >
-                        <i className="fa fas fa-table-tennis"> </i>
+                        <i className="fa fas fa-table-tennis self-center"> </i>
                       </div>
                     ))}
                   </div>
@@ -338,7 +335,7 @@ class Match extends Component {
 
             <div
               id="score-log"
-              className="d-flex justify-content-left border-bottom p-4 overflow-auto"
+              className="flex justify-left border-bottom p-4 overflow-auto"
             >
               <div
                 className="fa fas fa-undo text-rightplayer py-3 pr-4"

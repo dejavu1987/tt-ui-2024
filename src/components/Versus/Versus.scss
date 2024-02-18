@@ -1,4 +1,4 @@
-@import '../../scss/base';
+
 $url_0: url(../../img/svg/versus.svg);
 
 .versus {
@@ -13,7 +13,7 @@ $url_0: url(../../img/svg/versus.svg);
       width: auto;
       height: 100%;
       background: linear-gradient(90deg, rgba(0, 0, 0, 0.4), transparent);
-      background-color: $leftplayer-color;
+      
       position: absolute;
       top: 0;
       right: 15px;
@@ -21,11 +21,13 @@ $url_0: url(../../img/svg/versus.svg);
       transform: skewX(-12deg);
       z-index: 1;
       box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+
+      @apply bg-leftplayer
     }
 
     &.rightplayer::before {
       background: linear-gradient(-90deg, rgba(0, 0, 0, 0.4), transparent);
-      background-color: $rightplayer-color;
+      @apply bg-rightplayer;
     }
 
     &__content {

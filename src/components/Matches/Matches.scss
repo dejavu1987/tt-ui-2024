@@ -1,13 +1,13 @@
-@import '../../scss/base';
 .matches-score {
     min-width: 2rem;
 }
 
 @media (max-width: 767px) {
     .card-header-sm{
-        background: lighten(desaturate($primary-color, 60), 40);
+        @apply bg-primary-light;
+
         .match-over &{
-            background: lighten(desaturate($primary-color, 90), 60);
+            @apply bg-primary-light;
         }
     }
     table.table td {

@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Flag from '../Flag/Flag';
+import React from "react";
+import PropTypes from "prop-types";
+import Flag from "../Flag/Flag";
 
 const PlayerInfo = ({ player }) => {
   return (
     <div>
-      <h1 className="display-1">{player.name}</h1>
+      <h1 className="h2">{player.name}</h1>
       <hr />
       <table className="table table-striped table-hover">
         <tbody>

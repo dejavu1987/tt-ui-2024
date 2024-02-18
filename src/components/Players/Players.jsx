@@ -39,8 +39,8 @@ const Players = ({ filters, history }) => {
   });
 
   return (
-    <div className="container" id="devic-list">
-      <h1>Players</h1>
+    <div className="container mx-auto px-4" id="devic-list">
+      <h1 className="h2">Players</h1>
       <table className="table">
         <thead>
           <tr>

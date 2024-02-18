@@ -3,28 +3,9 @@ import PropTypes from "prop-types";
 import configs from "../../configs";
 import { useHistory } from "react-router";
 import { useForm } from "react-hook-form";
-import {
-  Button,
-  InputAdornment,
-  makeStyles,
-  TextField,
-} from "@material-ui/core";
-import PaymentIcon from "@material-ui/icons/Payment";
-import FaceIcon from "@material-ui/icons/Face";
-import FingerprintIcon from "@material-ui/icons/Fingerprint";
-import PublicIcon from "@material-ui/icons/Public";
-import WorkIcon from "@material-ui/icons/Work";
 
-const useStyles = makeStyles(() => {
-  return {
-    field: {
-      margin: 10,
-    },
-  };
-});
 const PlayerForm = ({ id }) => {
-  const classes = useStyles();
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit, errors } = useForm();
   const [player, setPlayer] = useState({});
   const history = useHistory();
   const API = configs.apiUrl + "/api/player";
@@ -67,137 +48,80 @@ const PlayerForm = ({ id }) => {
   }
   if (id && !player.id) return "";
   return (
-    <div className="container">
-      <h2>{(id && `Edit ${player.name}`) || "Add player"}</h2>
+    <div className="container mx-auto px-4">
+      <h2 className="h2">{(id && `Edit ${player.name}`) || "Add player"}</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="row">
           <div className="col">
-            <div className="form-group">
-              <TextField
-                className={classes.field}
-                error={!!errors.id}
+            <div className="border flex flex-col">
+              <input
+                type="text"
                 name="id"
                 id="id"
                 label="ID"
                 defaultValue={player.id}
-                inputRef={register({ required: true })}
-                helperText={errors.id && "This field is required"}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <PaymentIcon />
-                    </InputAdornment>
-                  ),
-                }}
+                {...register("id", { required: true })}
               />
-              <TextField
-                className={classes.field}
+              <input
+                type="text"
                 name="uuid"
                 label="NUID"
                 icon="fingerprint"
                 type="text"
                 defaultValue={player.uuid}
-                inputRef={register()}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <FingerprintIcon />
-                    </InputAdornment>
-                  ),
-                }}
+                {...register("uuid", { required: true })}
               />
             </div>
-            <div className="form-group">
-              <TextField
-                className={classes.field}
+            <div className="border flex flex-col">
+              <input
+                type="text"
                 name="name"
-                error={!!errors.name}
                 label="Short Name"
                 defaultValue={player.name}
-                inputRef={register({ required: true })}
-                helperText={errors.name && "This field is required"}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <FaceIcon />
-                    </InputAdornment>
-                  ),
-                }}
+                {...register("name", { required: true })}
               />
-              <TextField
-                className={classes.field}
+              <input
+                type="text"
                 name="photo"
-                error={!!errors.photo}
                 label="Url to a photo"
                 defaultValue={player.photo}
-                inputRef={register()}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <FaceIcon />
-                    </InputAdornment>
-                  ),
-                }}
+                {...register("photo")}
               />
-              <TextField
-                className={classes.field}
+              <input
+                type="text"
                 name="fullName"
                 label="Full Name"
                 defaultValue={player.fullName}
-                inputRef={register()}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <FaceIcon />
-                    </InputAdornment>
-                  ),
-                }}
+                {...register("fullName")}
               />
-              <TextField
-                className={classes.field}
+              <input
+                type="text"
                 name="profession"
                 label="Profession"
-                inputRef={register()}
                 defaultValue={player.profession}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <WorkIcon />
-                    </InputAdornment>
-                  ),
-                }}
+                {...register("profession")}
               />
-              <TextField
-                className={classes.field}
+              <input
+                type="text"
                 name="nationality"
                 label="Nationality"
                 defaultValue={player.nationality}
-                error={!!errors.nationality}
-                helperText={errors.nationality && 'Check this field, Eg: "de"'}
-                inputRef={register({ pattern: /^[a-z]{2}$/ })}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <PublicIcon />
-                    </InputAdornment>
-                  ),
-                }}
+                {...register("nationality", {
+                  required: true,
+                  pattern: /^[a-z]{2}$/,
+                })}
               />
             </div>
-            <div className="form-group">
-              <TextField
-                className={classes.field}
-                multiline
+            <div className="border flex flex-col">
+              <textarea
                 defaultValue={player.hobbies}
                 rows={4}
                 name="hobbies"
                 label="Hobbies"
-                inputRef={register()}
-              />
+                {...register("hobbies")}
+              ></textarea>
             </div>
-            <Button color="primary" type="submit" variant="outlined">
-              Save
-            </Button>
+            <button type="submit">Save</button>
           </div>
         </div>
       </form>

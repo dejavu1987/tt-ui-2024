@@ -78,9 +78,9 @@ class Devices extends Component {
 
   render() {
     return (
-      <div className="container" id="devic-list">
-        <h1>Devices</h1>
-        <table className="table">
+      <div className="container mx-auto px-4" id="devic-list">
+        <h1 className="h2">Devices</h1>
+        <table className="table-auto mb-4 w-full">
           <thead>
             <tr>
               <th>ID</th>
@@ -143,7 +143,7 @@ class Devices extends Component {
             })}
           </tbody>
         </table>
-        <h2>Add device</h2>
+        <h2 className="h3">Add device</h2>
         <form onSubmit={this.handleSubmit}>
           <div className="row">
             <div className="col">
@@ -165,7 +165,7 @@ class Devices extends Component {
               />
             </div>
           </div>
-          <button color="primary" type="submit">
+          <button type="submit">
             <i className="fa fas fa-microchip mr-2"> </i> Add Device
           </button>
         </form>

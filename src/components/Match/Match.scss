@@ -1,5 +1,4 @@
-@import '../../scss/base';
-@import '../../scss/nvd3';
+@import "../../scss/nvd3";
 
 //colors
 $white: white;
@@ -80,10 +79,11 @@ select.announcer {
 
 #match-details {
   position: relative;
+  top: 3rem;
 
   .col {
+    @apply bg-primary;
     margin: 0 auto 0;
-    background: $primary-color;
     color: $white;
     position: relative;
     z-index: 10;
@@ -132,12 +132,14 @@ select.announcer {
   text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 }
 .sets-won {
-  font-size: 3rem;
+  font-size: 7rem;
   position: absolute;
   bottom: 0;
-  padding: 0.5rem 2rem;
-  min-width: 4rem;
+  padding: 2rem;
+  min-width: 10rem;
+  height: 10rem;
   text-align: center;
+  color: white;
   //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
   border-radius: 30% 0 0 0;
 }
@@ -149,8 +151,9 @@ select.announcer {
 }
 
 .server-wrap {
-  position: absolute;
-  top: .5rem;
+  @apply flex absolute gap-2;
+
+  bottom: 0.5rem;
   padding: 0.5rem;
 
   @media (min-width: 720px) {
@@ -160,23 +163,23 @@ select.announcer {
   }
 
   &--left {
-    left: 6rem;
+    left: 12rem;
     right: auto;
   }
   &--right {
-    right: 6rem;
+    right: 12rem;
     left: auto;
   }
 
   .serves-left {
+    @apply rounded-full flex justify-center;
     text-align: center;
-    padding: 1vh;
-    font-size: 2.5vh;
+    font-size: 2rem;
     color: $white;
     //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
     text-shadow: 1px 1px 2px $black_30;
-    width: 4.4vh;
-    height: 4.4vh;
+    width: 3rem;
+    height: 3rem;
   }
 }
 
@@ -227,13 +230,6 @@ select.announcer {
   .current-points {
     padding-bottom: 0;
   }
-  .sets-won {
-    font-size: 5rem;
-    min-width: 7rem;
-    height: 7rem;
-    padding-top: 1.3rem;
-    color: white;
-  }
 }
 @media (max-width: 1100px) {
   .score-log {
@@ -247,21 +243,23 @@ select.announcer {
     max-width: 38rem;
     min-height: 10rem;
     &:before {
-      content: ' ';
+      @apply border-t-[10rem] border-t-primary;
+
+      content: " ";
       position: absolute;
       width: 0;
       height: 100%;
-      border-top: 10rem solid $primary-color;
+
       border-left: 7rem solid transparent;
       left: -6.9rem;
       top: 0;
     }
     &:after {
-      content: ' ';
+      @apply border-t-[10rem] border-t-primary;
+      content: " ";
       position: absolute;
       width: 0;
       height: 100%;
-      border-top: 10rem solid $primary-color;
       border-right: 7rem solid transparent;
       right: -6.9rem;
       top: 0;
@@ -278,6 +276,12 @@ select.announcer {
   html {
     opacity: 0.98;
   }
+
+  #match-details {
+    position: relative;
+    top: 0;
+  }
+
   .player-name.text-light {
     font-size: 20vh;
     padding: 10px;
@@ -311,18 +315,13 @@ select.announcer {
 
     &::before,
     &::after {
-      content: '';
+      content: "";
       display: none;
     }
   }
 
   .current-points {
     font-size: 50vh;
-  }
-
-  .sets-won {
-    font-size: 20px;
-    padding: 5px 17px;
   }
 
   .server-wrap .serves-left {
@@ -402,7 +401,7 @@ select.announcer {
     flex-grow: 3;
   }
 
-  .d-flex.justify-content-left.border-bottom.p-4.overflow-auto {
+  .flex.justify-content-left.border-bottom.p-4.overflow-auto {
     flex-grow: 1;
   }
 
@@ -482,7 +481,7 @@ select.announcer {
     }
 
     .text-center {
-      background: $primary-color;
+      @apply bg-primary;
     }
   }
 }

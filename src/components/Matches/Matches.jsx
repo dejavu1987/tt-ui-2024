@@ -98,9 +98,9 @@ class Matches extends Component {
   render() {
     return this.state.loaded ? (
       <ErrorBoundary>
-        <table className="table matches-table">
+        <table className="table table-auto matches-table w-full">
           <thead>
-            <tr className="d-none d-md-table-row">
+            <tr className="">
               <th>Date</th>
               {(!this.props.hide ||
                 this.props.hide.indexOf("event") === -1) && <th>Event</th>}
@@ -115,12 +115,9 @@ class Matches extends Component {
             {this.state.matches.map((match) => (
               <tr
                 key={match.id}
-                className={
-                  `d-block mb-4 mb-md-0 d-md-table-row clearfix ` +
-                  (match.over ? "match-over" : "match-active")
-                }
+                className={match.over ? "match-over" : "match-active"}
               >
-                <td className="card-header-sm align-middle d-block d-md-table-cell border-xs-none border-sm-none text-center text-md-left">
+                <td className="card-header-sm  text-center md:text-left">
                   <Link to={`/match/${match.id}`}>
                     <span className="d-inline d-md-none">
                       {match.event} / {match.stage} on{" "}
@@ -132,7 +129,7 @@ class Matches extends Component {
                 </td>
                 {(!this.props.hide ||
                   this.props.hide.indexOf("event") === -1) && (
-                  <td className="align-middle d-none d-md-table-cell float-left float-md-none font-weight-bold">
+                  <td className="align-middle d-none d-md-table-cell font-weight-bold">
                     {match.tournament ? (
                       <Link to={`/tournament/${match.tournament}`}>
                         {match.event}
@@ -144,12 +141,10 @@ class Matches extends Component {
                 )}
                 {(!this.props.hide ||
                   this.props.hide.indexOf("stage") === -1) && (
-                  <td className="align-middle d-none d-md-table-cell  float-right  float-md-none">
-                    {match.stage}
-                  </td>
+                  <td className="align-middle">{match.stage}</td>
                 )}
-                <td className="align-middle player-left text-leftplayer  d-block d-md-table-cell float-left  float-md-none">
-                  <div className="d-flex justify-content-between">
+                <td className="align-middle player-left text-leftplayer  d-block d-md-table-cell">
+                  <div className="flex justify-between">
                     <div className="flex-grow-1 text-center">
                       <Link to={`/player/${match.players[0].id}`}>
                         {match.players[0].name}
@@ -172,8 +167,8 @@ class Matches extends Component {
                     </div>
                   </div>
                 </td>
-                <td className="align-middle player-right text-rightplayer  d-block d-md-table-cell float-left  float-md-none">
-                  <div className="d-flex justify-content-between">
+                <td className="align-middle player-right text-rightplayer  d-block d-md-table-cell">
+                  <div className="flex justify-between">
                     <div className="text-left matches-score">
                       {match.over && `[${match.sets[1]}]`}
                       {match.winner === 1 && (
@@ -196,7 +191,7 @@ class Matches extends Component {
                     </div>
                   </div>
                 </td>
-                <td className="align-middle actions d-block d-md-table-cell float-right float-md-none">
+                <td className="align-middle actions">
                   {!match.over && (
                     <button
                       onClick={() => this.joinWithDeviceHandler(match.id)}

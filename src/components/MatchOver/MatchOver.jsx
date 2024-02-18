@@ -1,16 +1,16 @@
-import React from 'react';
-import { useHistory } from 'react-router';
-import PropTypes from 'prop-types';
-import Slider from 'react-slick';
-import Versus from '../Versus/Versus';
-import MatchStats from '../MatchStats/MatchStats';
-import SetChart from '../SetChart/SetChart';
-import configs from '../../configs';
-import { getPlayerName } from '../../helper';
+import React from "react";
+import { useHistory } from "react-router";
+import PropTypes from "prop-types";
+import Slider from "react-slick";
+import Versus from "../Versus/Versus";
+import MatchStats from "../MatchStats/MatchStats";
+import SetChart from "../SetChart/SetChart";
+import configs from "../../configs";
+import { getPlayerName } from "../../helper";
 
 const MatchOver = ({ match }) => {
   const history = useHistory();
-  const REMATCH_API = configs.apiUrl + '/api/rematch';
+  const REMATCH_API = configs.apiUrl + "/api/rematch";
   const stats = {};
 
   stats.highestStreaks = [0, 0];
@@ -47,12 +47,12 @@ const MatchOver = ({ match }) => {
       {
         values: chartValues[0],
         key: getPlayerName(0, match.players),
-        color: '#44B3C2',
+        color: "#44B3C2",
       },
       {
         values: chartValues[1],
         key: getPlayerName(1, match.players),
-        color: '#E45641',
+        color: "#E45641",
       },
     ];
   });
@@ -90,30 +90,30 @@ const MatchOver = ({ match }) => {
   };
 
   const handleRematchClick = () => {
-    console.log('Rematch!');
+    console.log("Rematch!");
     if (!match.over) return;
-    fetch(REMATCH_API + '/' + match.id, {
-      method: 'POST',
+    fetch(REMATCH_API + "/" + match.id, {
+      method: "POST",
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
     })
       .then((response) => response.json())
       .then((data) => {
-        history.push('/match/' + data.match.id);
+        history.push("/match/" + data.match.id);
       });
   };
 
   return (
     <div id="match-stats">
       <div className="text-center">
-        <div className="row d-flex align-items-center" id="match-details">
+        <div className="row flex items-center" id="match-details">
           <div className="col text-center">
             <h2 className="match-title h2">{match.event}</h2>
             <h4 className="match-stage">{match.stage}</h4>
             <h6 className="match-config">
-              Game of: {match.config && match.config.gameOf} | Best of{' '}
+              Game of: {match.config && match.config.gameOf} | Best of{" "}
               {match.config && match.config.bestOf}
             </h6>
           </div>

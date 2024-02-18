@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const Flag = ({ country, size = 64 }) => {
-  if (!country) return '-/-';
+  if (!country) return "-/-";
   return (
     <div className="flag">
       <img
-        src={`https://www.countryflags.io/${country}/shiny/${size}.png`}
+        height={size}
+        src={`https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/${country}.svg`}
         alt={`Flag of ${country}`}
       />
     </div>

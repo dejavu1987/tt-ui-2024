@@ -1,5 +1,5 @@
 import { Component } from "react";
-import "./App.scss";
+
 import { Route } from "react-router-dom";
 import CreateMatch from "./components/CreateMatch/CreateMatch";
 import Matches from "./components/Matches/Matches";
@@ -49,10 +49,10 @@ class App extends Component {
           exact={true}
           render={(routeProps) => (
             <MainLayout>
-              <div className="container-fluid" id="match-list">
+              <div className="p-2" id="match-list">
                 {/* <h2 className="pb-5">Latest Match</h2>
               <Match id="latest"></Match> */}
-                <h2>Matches</h2>
+                <h2 className="h2">Matches</h2>
                 <Matches {...routeProps} />
               </div>
             </MainLayout>

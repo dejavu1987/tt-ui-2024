@@ -1,6 +1,6 @@
 import { Component } from "react";
-import "./CreateMatch.scss";
 import configs from "../../configs";
+import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
 
 /**
  * Create match form
@@ -53,11 +53,11 @@ class CreateMatch extends Component {
 
   render() {
     return (
-      <div className="container py-5">
-        <form className="container" onSubmit={this.handleSubmit}>
-          <h2 className="my-10">Create new Match</h2>
-          <div className="row my-10">
-            <div className="col-8 flex flex-col gap-4">
+      <div className="container mx-auto px-4 py-5">
+        <form onSubmit={this.handleSubmit}>
+          <h2 className="h2">Create new Match</h2>
+          <div className="flex gap-6 mb-6">
+            <div className="w-3/4 flex flex-col gap-4">
               <div className="flex gap-4">
                 <input
                   name="event"
@@ -189,7 +189,7 @@ class CreateMatch extends Component {
                 )}
               </div>
             </div>
-            <div className="col-4">
+            <div className="w-1/4 flex flex-col gap-2">
               <label htmlFor="">
                 Game of:{" "}
                 <input
@@ -238,4 +238,4 @@ class CreateMatch extends Component {
   }
 }
 
-export default CreateMatch;
+export default withRouter(CreateMatch);
