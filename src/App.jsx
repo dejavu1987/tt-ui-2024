@@ -14,6 +14,7 @@ import configs from "./configs";
 import VersusPage from "./pages/Versus/VersusPage";
 import MainLayout from "./layouts/MainLayout";
 import PlayerForm from "./components/PlayerForm/PlayerForm";
+import { Proxy } from "./components/Proxy/Proxy";
 const API_PLAYERS = configs.apiUrl + "/api/players";
 
 class App extends Component {
@@ -139,6 +140,14 @@ class App extends Component {
           render={(routeProps) => (
             <MainLayout>
               <Tournament id={routeProps.match.params.id}></Tournament>
+            </MainLayout>
+          )}
+        />
+        <Route
+          path="/proxy"
+          render={(routeProps) => (
+            <MainLayout>
+              <Proxy />
             </MainLayout>
           )}
         />
