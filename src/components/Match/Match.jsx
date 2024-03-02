@@ -247,18 +247,21 @@ class Match extends Component {
               ))}
             </select>
             <div className="flex items-center" id="match-details">
-              <div className="col text-center">
+              <div className="col text-center w-full sm:w-auto">
                 <h2 className="match-title h2">{match.event}</h2>
                 <h4 className="match-stage">{match.stage}</h4>
-                <h6 className="match-config">
+                <h6 className="match-config mt-2">
                   Game of: {match.config && match.config.gameOf} | Best of{" "}
                   {match.config && match.config.bestOf}
                 </h6>
               </div>
             </div>
-            <div className="flex flex-col sm:flex sm:flex-row" id="scoreboard">
+            <div
+              className="relative flex flex-col sm:flex-row w-full lg:-top-20"
+              id="scoreboard"
+            >
               <div
-                className={`relative col-12 col-sm-6 flex-column px-0 border-leftplayer border ${
+                className={`relative w-full  px-0 border-leftplayer border ${
                   match.winner === 0 && "the-winner"
                 }`}
                 id="playerA"
@@ -295,7 +298,7 @@ class Match extends Component {
                 )}
               </div>
               <div
-                className={`relative col-12 col-sm-6 flex-column px-0 border-rightplayer border  ${
+                className={`relative w-full flex-column px-0 border-rightplayer border  ${
                   match.winner === 1 && "the-winner"
                 }`}
                 id="playerB"

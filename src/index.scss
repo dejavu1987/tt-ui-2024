@@ -24,17 +24,13 @@ body {
   min-height: 88vh;
 }
 
-#main {
-  min-height: calc(100vh - 12rem);
-}
-
 header,
 footer {
   @apply p-4 text-white;
 }
 
 header {
-  @apply bg-gradient-to-b from-primary-dark to-primary;
+  @apply bg-gradient-to-b from-primary-dark to-primary hidden md:block;
 }
 
 footer {
@@ -82,13 +78,18 @@ button {
   @apply border rounded-full px-3 py-2;
 }
 
-td {
-  @apply border-b border-gray-200 px-6 py-4;
+table {
+  @apply w-full text-left;
 }
 
-main {
-  @apply py-10;
+th {
+  @apply border-b border-gray-200 py-2;
 }
+
+td {
+  @apply border-b border-gray-200 py-2;
+}
+
 .h1 {
   font-size: 10rem;
 }
@@ -99,6 +100,12 @@ main {
 .h3 {
   @apply mb-4;
   font-size: 2rem;
+}
+main {
+  min-height: calc(100vh - 8rem);
+}
+.main-container {
+  @apply container mx-auto px-4 py-5;
 }
 
 @media (min-width: 720px) {

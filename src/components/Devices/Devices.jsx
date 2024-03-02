@@ -49,7 +49,7 @@ class Devices extends Component {
       body: JSON.stringify(this.state.newDevice),
     })
       .then((res) => res.json())
-      .then((data) => this.props.history.push("/devices"));
+      .then(() => this.props.history.push("/devices"));
   }
 
   handleEdit(event, device) {
@@ -67,7 +67,7 @@ class Devices extends Component {
       body: JSON.stringify(device),
     })
       .then((res) => res.json())
-      .then((data) => this.props.history.push("/devices"));
+      .then(() => this.props.history.push("/devices"));
   }
 
   componentDidMount() {
@@ -78,10 +78,10 @@ class Devices extends Component {
 
   render() {
     return (
-      <div className="container mx-auto px-4" id="devic-list">
+      <div className="main-container" id="devic-list">
         <h1 className="h2">Devices</h1>
         <table className="table-auto mb-4 w-full">
-          <thead>
+          <thead className="text-left">
             <tr>
               <th>ID</th>
               <th>Name</th>
@@ -97,8 +97,8 @@ class Devices extends Component {
                   </td>
                   <td>{device.name}</td>
                   <td>
-                    <div className="row">
-                      <div className="col-6">
+                    <div className="flex">
+                      <div className="w-1/2">
                         <form
                           onSubmit={(event) => this.handleEdit(event, device)}
                         >
@@ -111,7 +111,7 @@ class Devices extends Component {
                           />
                         </form>
                       </div>
-                      <div className="col-6">
+                      <div className="w-1/2">
                         <div className="mdb-btn-group">
                           <Link to={`/match/${device.linkedMatch}`}>
                             <button
@@ -145,27 +145,21 @@ class Devices extends Component {
         </table>
         <h2 className="h3">Add device</h2>
         <form onSubmit={this.handleSubmit}>
-          <div className="row">
+          <div className="flex gap-2">
             <div className="col">
-              <input
-                name="name"
-                label="Name"
-                required
-                type="text"
-                onChange={this.handleChange}
-              />
+              <label>
+                Name:
+                <input required type="text" onChange={this.handleChange} />
+              </label>
             </div>
             <div className="col">
-              <input
-                name="linkedMatch"
-                label="Linked Match"
-                required
-                type="text"
-                onChange={this.handleChange}
-              />
+              <label>
+                Linked Match:
+                <input required type="text" onChange={this.handleChange} />
+              </label>
             </div>
           </div>
-          <button type="submit">
+          <button className="mt-2" type="submit">
             <i className="fa fas fa-microchip mr-2"> </i> Add Device
           </button>
         </form>

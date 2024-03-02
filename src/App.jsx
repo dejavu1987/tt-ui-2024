@@ -51,9 +51,6 @@ class App extends Component {
           render={(routeProps) => (
             <MainLayout>
               <div className="p-2" id="match-list">
-                {/* <h2 className="pb-5">Latest Match</h2>
-              <Match id="latest"></Match> */}
-                <h2 className="h2">Matches</h2>
                 <Matches {...routeProps} />
               </div>
             </MainLayout>

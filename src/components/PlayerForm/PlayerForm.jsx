@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import configs from "../../configs";
 import { useHistory } from "react-router";
 import { useForm } from "react-hook-form";
 
 const PlayerForm = ({ id }) => {
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, formState, watch } = useForm();
   const [player, setPlayer] = useState({});
   const history = useHistory();
   const API = configs.apiUrl + "/api/player";
@@ -46,40 +46,45 @@ const PlayerForm = ({ id }) => {
         console.log({ e });
       });
   }
-  if (id && !player.id) return "";
+  // if (id && !player.id) return "";
   return (
-    <div className="container mx-auto px-4">
+    <div className="main-container">
       <h2 className="h2">{(id && `Edit ${player.name}`) || "Add player"}</h2>
+
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="row">
-          <div className="col">
-            <div className="border flex flex-col">
+        <div className="flex flex-col gap-4">
+          <div className="border flex flex-col p-4">
+            <label htmlFor="id">
+              ID:{" "}
               <input
                 type="text"
-                name="id"
-                id="id"
-                label="ID"
                 defaultValue={player.id}
-                {...register("id", { required: true })}
+                {...(register("id"), { required: true })}
               />
+              {formState.errors.id && <span>This field is required</span>}
+            </label>
+            <label htmlFor="uuid">
+              UUID:{" "}
               <input
-                type="text"
-                name="uuid"
-                label="NUID"
-                icon="fingerprint"
                 type="text"
                 defaultValue={player.uuid}
-                {...register("uuid", { required: true })}
+                {...register("uuid")}
               />
-            </div>
-            <div className="border flex flex-col">
+              {formState.errors.uuid && <span>This field is required</span>}
+            </label>
+          </div>
+          <div className="border flex flex-col p-4">
+            <label>
+              Name:{" "}
               <input
                 type="text"
-                name="name"
-                label="Short Name"
                 defaultValue={player.name}
-                {...register("name", { required: true })}
+                {...register("name")}
               />
+              {formState.errors.name && <span>This field is required</span>}
+            </label>
+            <label>
+              Photo:{" "}
               <input
                 type="text"
                 name="photo"
@@ -87,42 +92,50 @@ const PlayerForm = ({ id }) => {
                 defaultValue={player.photo}
                 {...register("photo")}
               />
+            </label>
+            <label>
+              Full Name:
               <input
                 type="text"
-                name="fullName"
-                label="Full Name"
+                id="fullName"
                 defaultValue={player.fullName}
                 {...register("fullName")}
               />
+            </label>
+
+            <label htmlFor="profession">
+              Profession:{" "}
               <input
                 type="text"
-                name="profession"
-                label="Profession"
                 defaultValue={player.profession}
                 {...register("profession")}
               />
+            </label>
+            <label htmlFor="nationality">
+              Nationality:{" "}
               <input
                 type="text"
-                name="nationality"
-                label="Nationality"
                 defaultValue={player.nationality}
                 {...register("nationality", {
-                  required: true,
                   pattern: /^[a-z]{2}$/,
                 })}
               />
-            </div>
-            <div className="border flex flex-col">
+              {formState.errors.nationality && (
+                <span>This field is required</span>
+              )}
+            </label>
+          </div>
+          <div className="border flex flex-col p-4">
+            <label htmlFor="hobbies">
+              Hobbies:{" "}
               <textarea
                 defaultValue={player.hobbies}
                 rows={4}
-                name="hobbies"
-                label="Hobbies"
                 {...register("hobbies")}
               ></textarea>
-            </div>
-            <button type="submit">Save</button>
+            </label>
           </div>
+          <input type="submit" value="Submit" />
         </div>
       </form>
     </div>

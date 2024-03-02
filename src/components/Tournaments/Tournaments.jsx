@@ -39,7 +39,7 @@ class Tournaments extends Component {
 
   render() {
     return (
-      <div className="container mx-auto px-4" id="tournament-list">
+      <div className="main-container" id="tournament-list">
         <h1 className="h2">Tournaments</h1>
         <table className="table">
           <thead>

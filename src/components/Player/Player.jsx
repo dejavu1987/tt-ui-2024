@@ -204,7 +204,7 @@ class Player extends Component {
           </div>
         </div>
         <div className="pt-5">
-          <div lg="6">
+          <div>
             <h3>Sets Won vs Lost</h3>
             {/* {React.createElement(NVD3Chart, {
               xAxis: {
@@ -281,7 +281,7 @@ class Player extends Component {
               },
             })} */}
           </div>
-          <div lg="6">
+          <div>
             <h3>Points won vs lost</h3>
             {/* {React.createElement(NVD3Chart, {
               xAxis: {

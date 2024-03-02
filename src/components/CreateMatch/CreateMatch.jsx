@@ -53,9 +53,9 @@ class CreateMatch extends Component {
 
   render() {
     return (
-      <div className="container mx-auto px-4 py-5">
+      <div className="main-container">
         <form onSubmit={this.handleSubmit}>
-          <h2 className="h2">Create new Match</h2>
+          <h2 className="h2">New match</h2>
           <div className="flex gap-6 mb-6">
             <div className="w-3/4 flex flex-col gap-4">
               <div className="flex gap-4">
