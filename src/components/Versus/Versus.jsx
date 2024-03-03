@@ -1,4 +1,3 @@
-import React from "react";
 import "./Versus.scss";
 
 function Versus({
@@ -7,8 +6,8 @@ function Versus({
   winner,
 }) {
   return (
-    <div className="versus position-relative">
-      <div className="col-lg-7 player-name text-light text-2xl leftplayer px-5">
+    <div className="versus relative">
+      <div className="relative lg:w-2/3 player-name text-white text-2xl leftplayer px-5 h3">
         <div className="player-name__content">
           {playerA}
           {playerC && " & " + playerC}
@@ -21,7 +20,7 @@ function Versus({
         </div>
       </div>
       <div className="vs"></div>
-      <div className="col-lg-7 offset-lg-5 player-name text-light rightplayer h2">
+      <div className="relative lg:w-2/3 lg:ml-auto player-name text-white rightplayer h3">
         <div className="player-name__content">
           {typeof winner !== undefined && winner === 1 && (
             <i className="fa fas fa-crown text-warning  mx-5"> </i>

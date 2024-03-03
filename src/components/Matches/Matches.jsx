@@ -105,12 +105,16 @@ class Matches extends Component {
               <tr className="">
                 <th>Date</th>
                 {(!this.props.hide ||
-                  this.props.hide.indexOf("event") === -1) && <th>Event</th>}
+                  this.props.hide.indexOf("event") === -1) && (
+                  <th className="text-center">Event</th>
+                )}
                 {(!this.props.hide ||
-                  this.props.hide.indexOf("stage") === -1) && <th>Stage</th>}
+                  this.props.hide.indexOf("stage") === -1) && (
+                  <th className="text-center">Stage</th>
+                )}
                 <th className="text-center">Players</th>
                 <th className="text-center">Players</th>
-                <th>Actions</th>
+                <th className="text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -131,7 +135,7 @@ class Matches extends Component {
                   </td>
                   {(!this.props.hide ||
                     this.props.hide.indexOf("event") === -1) && (
-                    <td className="align-middle d-none d-md-table-cell font-weight-bold">
+                    <td className="text-center d-none d-md-table-cell font-weight-bold">
                       {match.tournament ? (
                         <Link to={`/tournament/${match.tournament}`}>
                           {match.event}
@@ -143,9 +147,9 @@ class Matches extends Component {
                   )}
                   {(!this.props.hide ||
                     this.props.hide.indexOf("stage") === -1) && (
-                    <td className="align-middle">{match.stage}</td>
+                    <td className="text-center">{match.stage}</td>
                   )}
-                  <td className="align-middle player-left text-leftplayer  d-block d-md-table-cell">
+                  <td className="text-center player-left text-leftplayer  d-block d-md-table-cell">
                     <div className="flex justify-between">
                       <div className="flex-grow-1 text-center">
                         <Link to={`/player/${match.players[0].id}`}>
@@ -169,7 +173,7 @@ class Matches extends Component {
                       </div>
                     </div>
                   </td>
-                  <td className="align-middle player-right text-rightplayer  d-block d-md-table-cell">
+                  <td className="text-center player-right text-rightplayer  d-block d-md-table-cell">
                     <div className="flex justify-between">
                       <div className="text-left matches-score">
                         {match.over && `[${match.sets[1]}]`}
@@ -193,13 +197,13 @@ class Matches extends Component {
                       </div>
                     </div>
                   </td>
-                  <td className="align-middle actions">
+                  <td className="text-center actions">
                     {!match.over && (
                       <button
                         onClick={() => this.joinWithDeviceHandler(match.id)}
                         title="Join with device!"
                         size="sm"
-                        className="fa fas fa-plug text-light dot"
+                        className="fa fas fa-plug button"
                       ></button>
                     )}
                     {this.state.admin && (
@@ -207,7 +211,7 @@ class Matches extends Component {
                         onClick={() => this.deleteMatchHandler(match.id)}
                         size="sm"
                         color="danger"
-                        className="fa fas fa-trash text-light dot"
+                        className="fa fas fa-trash button"
                       ></button>
                     )}
                   </td>

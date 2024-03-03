@@ -45,13 +45,6 @@ footer {
   color: #cde8ff !important;
 }
 
-.btn.btn-sm.dot {
-  border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
-  padding: 0.2rem;
-}
-
 /*------------------------------*/
 
 html,
@@ -108,9 +101,13 @@ main {
   @apply container mx-auto px-4 py-5;
 }
 
+.button {
+  @apply bg-primary text-white rounded-full px-3 py-2;
+}
+
 @media (min-width: 720px) {
   html,
   body {
-    font-size: 1.5vh;
+    font-size: clamp(10px, calc(12px + 1.5vh), 20px);
   }
 }

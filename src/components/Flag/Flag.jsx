@@ -5,7 +5,9 @@ const Flag = ({ country, size = 64 }) => {
   return (
     <div className="flag">
       <img
+        width={size}
         height={size}
+        style={{ maxHeight: `${size}px` }}
         src={`https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/${country}.svg`}
         alt={`Flag of ${country}`}
       />

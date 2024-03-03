@@ -119,7 +119,7 @@ const MatchOver = ({ match }) => {
           </div>
         </div>
       </div>
-      <div className="player-names position-relative">
+      <div className="player-names relative">
         {match.over && (
           <div
             className="rematch-btn fa fas fa-redo"

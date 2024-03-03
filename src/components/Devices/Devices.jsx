@@ -115,9 +115,8 @@ class Devices extends Component {
                         <div className="mdb-btn-group">
                           <Link to={`/match/${device.linkedMatch}`}>
                             <button
-                              className="fa fas fa-external-link-alt"
+                              className="fa fas fa-external-link-alt button"
                               size="sm"
-                              color="primary"
                               title="Go to linked Match!"
                             >
                               {" "}
@@ -126,7 +125,7 @@ class Devices extends Component {
                           <button
                             color="rightplayer"
                             size="sm"
-                            className="fa fas fa-lock text-light"
+                            className="fa fas fa-lock button"
                             title="Make this device my default device!"
                             onClick={() =>
                               this.handleSetDefaultDeviceClick(device.id)

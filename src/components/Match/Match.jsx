@@ -267,7 +267,7 @@ class Match extends Component {
                 id="playerA"
                 onClick={() => this.handlePlayerAClick("playerA")}
               >
-                <div className="player-name text-light h2 bg-leftplayer">
+                <div className="player-name text-white h2 bg-leftplayer">
                   {getPlayerName(0, match.players)}
                 </div>
                 <div className="current-points text-leftplayer">
@@ -276,7 +276,7 @@ class Match extends Component {
                     <i className="fa fas fa-crown text-warning"> </i>
                   )}
                 </div>
-                <div className="sets-won text-light bg-leftplayer">
+                <div className="sets-won text-white bg-leftplayer">
                   {match.sets[0]}
                 </div>
                 {(match.serves[0] === 1 || match.serves[0] === 3) && (
@@ -304,7 +304,7 @@ class Match extends Component {
                 id="playerB"
                 onClick={() => this.handlePlayerAClick("playerB")}
               >
-                <div className="player-name text-light bg-rightplayer h2 text-right">
+                <div className="player-name text-white bg-rightplayer h2 text-right">
                   {getPlayerName(1, match.players)}
                 </div>
                 <div className="current-points text-rightplayer">
@@ -313,7 +313,7 @@ class Match extends Component {
                     <i className="fa fas fa-crown text-warning"> </i>
                   )}
                 </div>
-                <div className="sets-won text-light bg-rightplayer">
+                <div className="sets-won text-white bg-rightplayer">
                   {match.sets[1]}
                 </div>
                 {(match.serves[0] === 2 || match.serves[0] === 4) && (

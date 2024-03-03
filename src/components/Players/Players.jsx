@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import configs from "../../configs";
+import Flag from "../Flag/Flag";
 
 const API = configs.apiUrl + "/api/players";
 
@@ -36,7 +37,7 @@ const Players = ({ filters, history }) => {
     fetch(API)
       .then((response) => response.json())
       .then((data) => setPlayers(data.players));
-  });
+  }, []);
 
   return (
     <div className="main-container" id="devic-list">
@@ -46,6 +47,7 @@ const Players = ({ filters, history }) => {
           <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>Nationality</th>
             <th>NUID</th>
           </tr>
         </thead>
@@ -57,6 +59,11 @@ const Players = ({ filters, history }) => {
                   <Link to={`/player/${player.id}`}>{player.id}</Link>
                 </td>
                 <td>{player.name}</td>
+                <td>
+                  {player.nationality && (
+                    <Flag country={player.nationality} size="32" />
+                  )}
+                </td>
                 <td>
                   <div className="row">
                     <div className="col-9">
