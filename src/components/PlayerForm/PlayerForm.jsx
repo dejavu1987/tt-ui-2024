@@ -5,7 +5,7 @@ import { useHistory } from "react-router";
 import { useForm } from "react-hook-form";
 
 const PlayerForm = ({ id }) => {
-  const { register, handleSubmit, formState, watch } = useForm();
+  const { register, handleSubmit, formState } = useForm();
   const [player, setPlayer] = useState({});
   const history = useHistory();
   const API = configs.apiUrl + "/api/player";
