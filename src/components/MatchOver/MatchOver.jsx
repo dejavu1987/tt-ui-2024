@@ -1,10 +1,8 @@
-import React from "react";
 import { useHistory } from "react-router";
-import PropTypes from "prop-types";
 import Slider from "react-slick";
 import Versus from "../Versus/Versus";
 import MatchStats from "../MatchStats/MatchStats";
-import SetChart from "../SetChart/SetChart";
+import { Threshold } from "../charts";
 import configs from "../../configs";
 import { getPlayerName } from "../../helper";
 
@@ -141,15 +139,31 @@ const MatchOver = ({ match }) => {
       <div className="charts p-3">
         <div>
           <Slider {...settings}>
-            {match.scoreLog.map(
-              (scoreLog, set) =>
+            {match.scoreLog.map((scoreLog, set) => {
+              const datum = stats.setScoreData[set][0].values.map((d, i) => {
+                return {
+                  i: d.x,
+                  positive: d.y,
+                  negative: stats.setScoreData[set][1].values[i].y,
+                };
+              });
+              return (
                 set < match.sets[0] + match.sets[1] && (
                   <div className="slide" key={set}>
                     <h3>Set {set + 1}</h3>
-                    <SetChart setScoreData={stats.setScoreData[set]}></SetChart>
+
+                    <Threshold
+                      width={500}
+                      height={300}
+                      axisLabels={["Matches Won", "Matches Lost"]}
+                      datum={datum}
+                      colorP="#0FF"
+                      colorN="#F55"
+                    />
                   </div>
                 )
-            )}
+              );
+            })}
             <div className="slide statistics">
               <MatchStats
                 sets={match.sets}

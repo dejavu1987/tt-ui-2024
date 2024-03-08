@@ -56,11 +56,7 @@ const PlayerForm = ({ id }) => {
           <div className="border flex flex-col p-4">
             <label htmlFor="id">
               ID:{" "}
-              <input
-                type="text"
-                defaultValue={player.id}
-                {...(register("id"), { required: true })}
-              />
+              <input type="text" defaultValue={player.id} {...register("id")} />
               {formState.errors.id && <span>This field is required</span>}
             </label>
             <label htmlFor="uuid">

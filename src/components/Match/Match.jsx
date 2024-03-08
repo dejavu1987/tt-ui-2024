@@ -273,7 +273,7 @@ class Match extends Component {
                 <div className="current-points text-leftplayer">
                   {match.scores[0]}{" "}
                   {match.winner === 0 && (
-                    <i className="fa fas fa-crown text-warning"> </i>
+                    <i className="fa fas fa-crown text-yellow-500"> </i>
                   )}
                 </div>
                 <div className="sets-won text-white bg-leftplayer">
@@ -310,7 +310,7 @@ class Match extends Component {
                 <div className="current-points text-rightplayer">
                   {match.scores[1]}{" "}
                   {match.winner === 1 && (
-                    <i className="fa fas fa-crown text-warning"> </i>
+                    <i className="fa fas fa-crown text-yellow-500"> </i>
                   )}
                 </div>
                 <div className="sets-won text-white bg-rightplayer">

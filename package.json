@@ -12,6 +12,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.1",
     "@visx/shape": "^3.5.0",
+    "@visx/tooltip": "^3.3.0",
     "@visx/visx": "^3.8.0",
     "luxon": "^1.28.1",
     "react": "^17",

@@ -10,8 +10,8 @@ import cityTemperature from "@visx/mock-data/lib/mocks/cityTemperature";
 
 // accessors
 const date = (d) => d.i;
-const ny = (d) => Number(d["positive"]);
-const sf = (d) => Number(d["negative"]);
+const pos = (d) => Number(d["positive"]);
+const neg = (d) => Number(d["negative"]);
 
 const defaultMargin = { top: 40, right: 30, bottom: 50, left: 40 };
 
@@ -21,17 +21,17 @@ const ThresholdChart = ({
   datum,
   axisLabels,
   margin = defaultMargin,
+  colorP = "#0f0",
+  colorN = "#f66",
 }) => {
   if (width < 10) return null;
-
-  console.log("datum", datum);
-
+  console.log(datum);
   // scales
   const timeScale = scaleLinear({
     domain: [0, datum.length - 1],
     nice: true,
   });
-  const temperatureScale = scaleLinear({
+  const yScale = scaleLinear({
     domain: [
       0,
       Math.max(...datum.map((x) => Math.max(x.positive, x.negative))),
@@ -44,7 +44,7 @@ const ThresholdChart = ({
   const yMax = height - margin.top - margin.bottom;
 
   timeScale.range([0, xMax]);
-  temperatureScale.range([yMax, 0]);
+  yScale.range([yMax, 0]);
 
   return (
     <div className="mt-2">
@@ -66,7 +66,7 @@ const ThresholdChart = ({
         <Group left={margin.left} top={margin.top}>
           <GridRows
             opacity={0.5}
-            scale={temperatureScale}
+            scale={yScale}
             width={xMax}
             height={yMax}
             stroke="#aaa"
@@ -95,7 +95,7 @@ const ThresholdChart = ({
             stroke="white"
           />
           <AxisLeft
-            scale={temperatureScale}
+            scale={yScale}
             tickFormat={(v) => {
               return `${v}`.replace(/\d+\.\d+/, "");
             }}
@@ -114,17 +114,17 @@ const ThresholdChart = ({
             id={`${Math.random()}`}
             data={datum}
             x={(d) => timeScale(date(d)) ?? 0}
-            y0={(d) => temperatureScale(ny(d)) ?? 0}
-            y1={(d) => temperatureScale(sf(d)) ?? 0}
+            y0={(d) => yScale(pos(d)) ?? 0}
+            y1={(d) => yScale(neg(d)) ?? 0}
             clipAboveTo={0}
             clipBelowTo={yMax}
             curve={curveBasis}
             belowAreaProps={{
-              fill: "#f66",
+              fill: colorN,
               fillOpacity: 0.4,
             }}
             aboveAreaProps={{
-              fill: "#0f0",
+              fill: colorP,
               fillOpacity: 0.4,
             }}
           />
@@ -132,7 +132,7 @@ const ThresholdChart = ({
             data={cityTemperature}
             curve={curveBasis}
             x={(d) => timeScale(date(d)) ?? 0}
-            y={(d) => temperatureScale(sf(d)) ?? 0}
+            y={(d) => yScale(neg(d)) ?? 0}
             stroke="#fff"
             strokeWidth={1.5}
             strokeOpacity={0.8}
@@ -142,7 +142,7 @@ const ThresholdChart = ({
             data={cityTemperature}
             curve={curveBasis}
             x={(d) => timeScale(date(d)) ?? 0}
-            y={(d) => temperatureScale(ny(d)) ?? 0}
+            y={(d) => yScale(pos(d)) ?? 0}
             stroke="#fff"
             strokeWidth={1.5}
           />

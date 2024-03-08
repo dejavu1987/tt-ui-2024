@@ -32,8 +32,8 @@ const Player = ({ id }) => {
     };
   }, [id]);
 
-  return this.state.loaded ? (
-    <div className="p-2" id="player-info">
+  return playerState.loaded ? (
+    <div className="p-2 mx-auto container" id="player-info">
       <div className="md:flex items-end gap-4">
         <div className="md:w-1/2">
           <img

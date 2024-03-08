@@ -167,7 +167,7 @@ class Matches extends Component {
                       </div>
                       <div className="text-right matches-score bg">
                         {match.winner === 0 && (
-                          <i className="fa fas fa-crown text-warning"> </i>
+                          <i className="fa fas fa-crown text-yellow-500"> </i>
                         )}
                         {match.over && `[${match.sets[0]}]`}
                       </div>
@@ -178,7 +178,7 @@ class Matches extends Component {
                       <div className="text-left matches-score">
                         {match.over && `[${match.sets[1]}]`}
                         {match.winner === 1 && (
-                          <i className="fa fas fa-crown text-warning"> </i>
+                          <i className="fa fas fa-crown text-yellow-500"> </i>
                         )}
                       </div>
                       <div className="flex-grow-1 text-center">
