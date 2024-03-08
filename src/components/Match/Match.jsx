@@ -9,6 +9,7 @@ import Throbber from "../Throbber/Throbber";
 import t from "../../translations";
 import MatchOver from "../MatchOver/MatchOver";
 import { getPlayerName } from "../../helper";
+import { MatchHeader } from "./MatchHeader";
 
 const API = configs.apiUrl + "/api/match";
 const UPDATE_API = configs.apiUrl + "/api/update-score";
@@ -236,7 +237,7 @@ class Match extends Component {
         !match.over ? (
           <div className="score-board-wrap">
             <select
-              className="announcer browser-default custom-select"
+              className="announcer browser-default custom-select absolute bottom-2 left-2 max-w-64"
               onChange={this.handleVoicesChange}
               defaultValue={this.state.selectedVoice}
             >
@@ -246,29 +247,38 @@ class Match extends Component {
                 </option>
               ))}
             </select>
-            <div className="flex items-center" id="match-details">
-              <div className="col text-center w-full sm:w-auto">
-                <h2 className="match-title h2">{match.event}</h2>
-                <h4 className="match-stage">{match.stage}</h4>
-                <h6 className="match-config mt-2">
-                  Game of: {match.config && match.config.gameOf} | Best of{" "}
-                  {match.config && match.config.bestOf}
-                </h6>
-              </div>
-            </div>
+            <MatchHeader
+              event={match.event}
+              stage={match.stage}
+              gameOf={match.config?.gameOf}
+              bestOf={match.config?.bestOf}
+            />
             <div
-              className="relative flex flex-col sm:flex-row w-full lg:-top-20"
+              className="relative flex flex-col sm:flex-row w-full"
               id="scoreboard"
             >
               <div
-                className={`relative w-full  px-0 border-leftplayer border ${
+                className={`relative w-full  px-0 border-leftplayer border-8 ${
                   match.winner === 0 && "the-winner"
                 }`}
                 id="playerA"
                 onClick={() => this.handlePlayerAClick("playerA")}
               >
-                <div className="player-name text-white h2 bg-leftplayer">
+                <div className="player-name text-white bg-leftplayer relative">
                   {getPlayerName(0, match.players)}
+                  <svg
+                    className="absolute left-0 bottom-0 w-1/2"
+                    width="400"
+                    height="10"
+                    viewBox="0 0 400 10"
+                    preserveAspectRatio="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <polygon
+                      points="0,0 390,0 400,10 0,10"
+                      className="fill-white"
+                    />
+                  </svg>
                 </div>
                 <div className="current-points text-leftplayer">
                   {match.scores[0]}{" "}
@@ -298,14 +308,27 @@ class Match extends Component {
                 )}
               </div>
               <div
-                className={`relative w-full flex-column px-0 border-rightplayer border  ${
+                className={`relative w-full flex-column px-0 border-rightplayer border-8  ${
                   match.winner === 1 && "the-winner"
                 }`}
                 id="playerB"
                 onClick={() => this.handlePlayerAClick("playerB")}
               >
-                <div className="player-name text-white bg-rightplayer h2 text-right">
+                <div className="player-name text-white bg-rightplayer text-right relative">
                   {getPlayerName(1, match.players)}
+                  <svg
+                    className="absolute right-0 bottom-0 w-1/2"
+                    width="400"
+                    height="10"
+                    viewBox="0 0 400 10"
+                    preserveAspectRatio="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <polygon
+                      points="10,0 400,0 400,10 0,10"
+                      className="fill-white"
+                    />
+                  </svg>
                 </div>
                 <div className="current-points text-rightplayer">
                   {match.scores[1]}{" "}

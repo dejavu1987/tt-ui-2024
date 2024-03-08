@@ -1,15 +1,10 @@
-import Header from "../components/Header/Header";
+import MainMenu from "../components/MainMenu/MainMenu";
 
 const MainLayout = ({ children }) => {
   return (
     <div className="layout layout--main">
-      <Header />
+      <MainMenu />
       <main id="main">{children}</main>
-      <footer>
-        <div className="text-white text-center p-5">
-          &copy; Copyright anil@anilmaharjan.com.np 2019
-        </div>
-      </footer>
     </div>
   );
 };

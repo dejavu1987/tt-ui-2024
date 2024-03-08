@@ -1,4 +1,3 @@
-
 $url_0: url(../../img/svg/versus.svg);
 
 .versus {
@@ -8,12 +7,12 @@ $url_0: url(../../img/svg/versus.svg);
     }
 
     &::before {
-      content: ' ';
+      content: " ";
       display: block;
       width: auto;
       height: 100%;
       background: linear-gradient(90deg, rgba(0, 0, 0, 0.4), transparent);
-      
+
       position: absolute;
       top: 0;
       right: 15px;
@@ -22,7 +21,7 @@ $url_0: url(../../img/svg/versus.svg);
       z-index: 1;
       box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 
-      @apply bg-leftplayer
+      @apply bg-leftplayer;
     }
 
     &.rightplayer::before {
@@ -41,12 +40,12 @@ $url_0: url(../../img/svg/versus.svg);
     background-image: $url_0;
     position: absolute;
     left: 50%;
-    width: 14rem;
-    height: 14rem;
+    width: 10rem;
+    height: 10rem;
     z-index: 10;
     background-repeat: no-repeat;
-    margin-left: -7rem;
+    margin-left: -5rem;
     top: 50%;
-    margin-top: -7rem;
+    margin-top: -5rem;
   }
 }

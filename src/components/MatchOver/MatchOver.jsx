@@ -5,6 +5,7 @@ import MatchStats from "../MatchStats/MatchStats";
 import { Threshold } from "../charts";
 import configs from "../../configs";
 import { getPlayerName } from "../../helper";
+import { MatchHeader } from "../Match/MatchHeader";
 
 const MatchOver = ({ match }) => {
   const history = useHistory();
@@ -105,18 +106,12 @@ const MatchOver = ({ match }) => {
 
   return (
     <div id="match-stats">
-      <div className="text-center">
-        <div className="row flex items-center" id="match-details">
-          <div className="col text-center">
-            <h2 className="match-title h2">{match.event}</h2>
-            <h4 className="match-stage">{match.stage}</h4>
-            <h6 className="match-config">
-              Game of: {match.config && match.config.gameOf} | Best of{" "}
-              {match.config && match.config.bestOf}
-            </h6>
-          </div>
-        </div>
-      </div>
+      <MatchHeader
+        event={match.event}
+        stage={match.stage}
+        bestOf={match.config?.bestOf}
+        gameOf={match.config?.gameOf}
+      />
       <div className="player-names relative">
         {match.over && (
           <div

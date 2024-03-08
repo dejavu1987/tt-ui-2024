@@ -76,11 +76,11 @@ table {
 }
 
 th {
-  @apply border-b border-gray-200 py-2;
+  @apply border-b border-gray-200 p-2;
 }
 
 td {
-  @apply border-b border-gray-200 py-2;
+  @apply border-b border-gray-200 p-2;
 }
 
 .h1 {
@@ -103,6 +103,18 @@ main {
 
 .button {
   @apply bg-primary text-white rounded-full px-3 py-2;
+}
+.nav-item {
+  @apply block;
+}
+.nav-link {
+  @apply text-white p-4 block;
+}
+.nav-link:hover {
+  @apply bg-primary-dark;
+}
+.nav-link.active {
+  @apply bg-primary-dark;
 }
 
 @media (min-width: 720px) {

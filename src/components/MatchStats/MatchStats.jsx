@@ -1,6 +1,3 @@
-import React from "react";
-import PropTypes from "prop-types";
-
 const MatchStats = ({
   sets,
   playerLeft,
@@ -10,7 +7,7 @@ const MatchStats = ({
   totalPoints,
 }) => {
   return (
-    <table className="table table-striped table-hover">
+    <table className="table-auto">
       <thead>
         <tr>
           <th>Stats</th>
