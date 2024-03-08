@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App.jsx";
+import "animate.css";
 import "./index.scss";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 

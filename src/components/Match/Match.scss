@@ -74,6 +74,7 @@ $font_1: sans-serif;
     padding: 2vh 0;
 
     h2.match-title {
+      margin-top: 1rem;
       font-size: 2rem;
     }
     h4.match-stage,
@@ -83,7 +84,7 @@ $font_1: sans-serif;
   }
 }
 .h2 {
-  font-family: $font_0, $font_1;
+  @apply mt-10;
   font-weight: 100;
 }
 .rematch-btn {

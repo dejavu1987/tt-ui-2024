@@ -11,6 +11,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --animate-duration: 0.3s;
 }
 
 body {
@@ -71,6 +73,10 @@ button {
   @apply border rounded-full px-3 py-2;
 }
 
+button:hover {
+  @apply bg-primary-dark;
+}
+
 table {
   @apply w-full text-left;
 }
@@ -91,7 +97,7 @@ td {
   font-size: 4rem;
 }
 .h3 {
-  @apply mb-4;
+  @apply mb-4 mt-10;
   font-size: 2rem;
 }
 main {
@@ -104,6 +110,11 @@ main {
 .button {
   @apply bg-primary text-white rounded-full px-3 py-2;
 }
+
+.button:hover {
+  @apply bg-primary-dark;
+}
+
 .nav-item {
   @apply block;
 }
@@ -115,6 +126,21 @@ main {
 }
 .nav-link.active {
   @apply bg-primary-dark;
+}
+
+.animate.slide {
+  animation-duration: 0.3s;
+  animation-name: slide;
+  animation-timing-function: ease-in;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 @media (min-width: 720px) {

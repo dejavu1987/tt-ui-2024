@@ -203,7 +203,7 @@ class Matches extends Component {
                         onClick={() => this.joinWithDeviceHandler(match.id)}
                         title="Join with device!"
                         size="sm"
-                        className="fa fas fa-plug button"
+                        className="fa fas fa-plug button text-xs"
                       ></button>
                     )}
                     {this.state.admin && (
@@ -211,7 +211,7 @@ class Matches extends Component {
                         onClick={() => this.deleteMatchHandler(match.id)}
                         size="sm"
                         color="danger"
-                        className="fa fas fa-trash button"
+                        className="fa fas fa-trash button text-xs"
                       ></button>
                     )}
                   </td>
