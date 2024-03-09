@@ -5,6 +5,7 @@ import configs from "../../configs";
 import { DateTime } from "luxon";
 import ErrorBoundary from "../ErrorBoundary";
 import Throbber from "../Throbber/Throbber";
+import classNames from "classnames";
 
 const API = configs.apiUrl + "/api/matches";
 const MATCH_API = configs.apiUrl + "/api/match";
@@ -81,7 +82,7 @@ class Matches extends Component {
       .then((data) => this.setState({ matches: data.matches, loaded: true }));
   }
 
-  componentWillReceiveProps(nextProps, nextContext) {
+  componentWillReceiveProps(nextProps) {
     const url = new URL(API),
       params = nextProps.filters;
     if (params) {
@@ -102,7 +103,7 @@ class Matches extends Component {
           <h2 className="h2">Matches</h2>
           <table className="table table-auto matches-table w-full">
             <thead>
-              <tr className="">
+              <tr className="hidden md:table-row">
                 <th>Date</th>
                 {(!this.props.hide ||
                   this.props.hide.indexOf("event") === -1) && (
@@ -121,9 +122,12 @@ class Matches extends Component {
               {this.state.matches.map((match) => (
                 <tr
                   key={match.id}
-                  className={match.over ? "match-over" : "match-active"}
+                  className={classNames(
+                    "block md:table-row",
+                    match.over ? "match-over" : "match-active"
+                  )}
                 >
-                  <td className="card-header-sm  text-center md:text-left">
+                  <td className="card-header-sm block md:table-cell  text-center md:text-left">
                     <Link to={`/match/${match.id}`}>
                       <span className="d-inline d-md-none">
                         {match.event} / {match.stage} on{" "}
@@ -135,7 +139,7 @@ class Matches extends Component {
                   </td>
                   {(!this.props.hide ||
                     this.props.hide.indexOf("event") === -1) && (
-                    <td className="text-center d-none d-md-table-cell font-weight-bold">
+                    <td className="text-center hidden md:table-cell font-weight-bold">
                       {match.tournament ? (
                         <Link to={`/tournament/${match.tournament}`}>
                           {match.event}
@@ -147,10 +151,12 @@ class Matches extends Component {
                   )}
                   {(!this.props.hide ||
                     this.props.hide.indexOf("stage") === -1) && (
-                    <td className="text-center">{match.stage}</td>
+                    <td className="text-center hidden md:table-cell">
+                      {match.stage}
+                    </td>
                   )}
-                  <td className="text-center player-left text-leftplayer  d-block d-md-table-cell">
-                    <div className="flex justify-between">
+                  <td className="text-center player-left text-leftplayer  inline-block md:table-cell">
+                    <div className="flex justify-between whitespace-nowrap">
                       <div className="flex-grow-1 text-center">
                         <Link to={`/player/${match.players[0].id}`}>
                           {match.players[0].name}
@@ -173,8 +179,8 @@ class Matches extends Component {
                       </div>
                     </div>
                   </td>
-                  <td className="text-center player-right text-rightplayer  d-block d-md-table-cell">
-                    <div className="flex justify-between">
+                  <td className="text-center player-right text-rightplayer inline-block md:table-cell">
+                    <div className="flex justify-between whitespace-nowrap">
                       <div className="text-left matches-score">
                         {match.over && `[${match.sets[1]}]`}
                         {match.winner === 1 && (

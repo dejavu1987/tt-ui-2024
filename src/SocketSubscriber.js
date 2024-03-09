@@ -1,11 +1,11 @@
-import openSocket from 'socket.io-client';
-import configs from './configs';
+import openSocket from "socket.io-client";
+import configs from "./configs";
 
 class SocketSubscriber {
   constructor(handlers) {
     this.socket = openSocket(configs.apiUrl);
     this.addHandlers(handlers);
-    this.socket.emit('chat message', "Hello from the other side");
+    this.socket.emit("chat message", "Hello from the other side");
   }
 
   addHandlers(handlers) {
@@ -17,7 +17,7 @@ class SocketSubscriber {
 }
 
 export const socketSubscriber = new SocketSubscriber({
-  'connected': data => {
-    console.log('Socket Connected');
-  }
+  connected: () => {
+    console.log("Socket Connected");
+  },
 });

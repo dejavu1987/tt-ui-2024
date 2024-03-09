@@ -24,7 +24,7 @@ class App extends Component {
     this.socketSubscriber.addHandlers({
       "device joined match": (matchId) => {
         this.props.history.push("/match/" + matchId);
-        console.log("device joined the match: ", matchId);
+        console.log("Device joined the match: ", matchId);
       },
     });
     const defaultDevice = localStorage.getItem("defaultDevice");
@@ -142,7 +142,7 @@ class App extends Component {
         />
         <Route
           path="/proxy"
-          render={(routeProps) => (
+          render={() => (
             <MainLayout>
               <Proxy />
             </MainLayout>

@@ -1,33 +1,36 @@
 .matches-score {
-    min-width: 2rem;
+  min-width: 2rem;
+}
+
+.match-over {
+  @apply bg-gray-200;
 }
 
 @media (max-width: 767px) {
-    .card-header-sm{
-        @apply bg-primary-light;
+  .card-header-sm {
+    @apply bg-primary-light;
 
-        .match-over &{
-            @apply bg-primary-light;
-        }
+    .match-over & {
+      @apply bg-primary-light;
     }
-    table.table td {
-        border: none;
-    }
-    table.matches-table tr {
-        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
-        margin-bottom: 1rem;
-    }
-    .player-left {
-        clear: both;
-    }
-    table.table td.player-left,
-    table.table td.player-right {
-        width: 50%;
-        padding-bottom: 1rem;
-    }
+  }
+  table.table td {
+    border: none;
+  }
+  table.matches-table tr {
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+  }
+  .player-left {
+    clear: both;
+  }
+  table.table td.player-left,
+  table.table td.player-right {
+    width: 50%;
+    padding-bottom: 1rem;
+  }
 
-    table.table td.actions {
-        padding: 0 1rem 0.5rem 0;
-    }
+  table.table td.actions {
+    padding: 0 1rem 0.5rem 0;
+  }
 }
-
