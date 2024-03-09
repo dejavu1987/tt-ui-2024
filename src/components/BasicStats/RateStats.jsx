@@ -12,7 +12,7 @@ const RateStats = ({
   console.log({ pointWins, pointLosses });
 
   return (
-    <div className="mdb-row text-center text-white">
+    <div className="flex text-center text-white gap-4 justify-stretch">
       <StatCard
         label="Matches"
         value={`${Math.round((wins / matchesCnt) * 100)}%`}

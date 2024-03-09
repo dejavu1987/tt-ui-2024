@@ -18,13 +18,13 @@ const MatchStats = ({
       <tbody>
         <tr>
           <th>Highest Streak</th>
-          <td>
+          <td className="whitespace-nowrap">
             {highestStreaks[0]}{" "}
             {highestStreaks[0] > highestStreaks[1] && (
               <i className="fa fas fa-crown text-yellow-500"> </i>
             )}
           </td>
-          <td>
+          <td className="whitespace-nowrap">
             {highestStreaks[1]}{" "}
             {highestStreaks[1] > highestStreaks[0] && (
               <i className="fa fas fa-crown text-yellow-500"> </i>
@@ -33,13 +33,13 @@ const MatchStats = ({
         </tr>
         <tr>
           <th>Total Points won</th>
-          <td>
+          <td className="whitespace-nowrap">
             {totalPoints[0]}{" "}
             {totalPoints[0] > totalPoints[1] && (
               <i className="fa fas fa-crown text-yellow-500"> </i>
             )}
           </td>
-          <td>
+          <td className="whitespace-nowrap">
             {totalPoints[1]}{" "}
             {totalPoints[1] > totalPoints[0] && (
               <i className="fa fas fa-crown text-yellow-500"> </i>
@@ -48,13 +48,13 @@ const MatchStats = ({
         </tr>
         <tr>
           <th>Sets won</th>
-          <td>
+          <td className="whitespace-nowrap">
             {sets[0]}{" "}
             {sets[0] > sets[1] && (
               <i className="fa fas fa-crown text-yellow-500"> </i>
             )}
           </td>
-          <td>
+          <td className="whitespace-nowrap">
             {sets[1]}{" "}
             {sets[1] > sets[0] && (
               <i className="fa fas fa-crown text-yellow-500"> </i>

@@ -5,7 +5,7 @@ const StatCard = ({ label, value }) => {
     <div className="mdb-col">
       <div className="mdb-card">
         <div className="mdb-card-header">{label}</div>
-        <div className="mdb-card-body display-1 h1">{value}</div>
+        <div className="mdb-card-body display-1 h2">{value}</div>
       </div>
     </div>
   );

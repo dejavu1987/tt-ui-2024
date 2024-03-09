@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import Slider from 'react-slick';
-import BasicStats from '../../components/BasicStats/BasicStats';
-import RateStats from '../../components/BasicStats/RateStats';
-import PlayerInfo from '../../components/PlayerInfo/PlayerInfo';
-import Versus from '../../components/Versus/Versus';
-import configs from '../../configs';
-import './VersusPage.scss';
+import { useEffect, useState } from "react";
+import Slider from "react-slick";
+import BasicStats from "../../components/BasicStats/BasicStats";
+import RateStats from "../../components/BasicStats/RateStats";
+import PlayerInfo from "../../components/PlayerInfo/PlayerInfo";
+import Versus from "../../components/Versus/Versus";
+import configs from "../../configs";
+import "./VersusPage.scss";
 
 const VersusPage = ({ players }) => {
-  const API = configs.apiUrl + '/api/player';
+  const API = configs.apiUrl + "/api/player";
 
   const [loading, setLoading] = useState(true);
   const [playerA, setPlayerA] = useState({});
@@ -17,8 +17,8 @@ const VersusPage = ({ players }) => {
   useEffect(() => {
     (async () => {
       const [playerAResponse, playerBResponse] = await Promise.all([
-        fetch(API + '/' + players.playerA),
-        fetch(API + '/' + players.playerB),
+        fetch(API + "/" + players.playerA),
+        fetch(API + "/" + players.playerB),
       ]);
 
       const a = await playerAResponse.json();
@@ -61,8 +61,8 @@ const VersusPage = ({ players }) => {
             }}
           ></Versus>
           <div className="p-3">
-            <div className="row player-detail-cards">
-              <div className="col-6">
+            <div className="flex player-detail-cards gap-4">
+              <div className="w-1/2">
                 <div className="player-detail-card  bg-leftplayer">
                   <Slider {...settings}>
                     <div className="slide">
@@ -98,7 +98,7 @@ const VersusPage = ({ players }) => {
                   </Slider>
                 </div>
               </div>
-              <div className="col-6">
+              <div className="w-1/2">
                 <div className="player-detail-card  bg-rightplayer">
                   <Slider {...settings}>
                     <div className="slide">
@@ -138,7 +138,7 @@ const VersusPage = ({ players }) => {
           </div>
         </>
       ) : (
-        ''
+        ""
       )}
     </div>
   );

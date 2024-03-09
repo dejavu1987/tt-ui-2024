@@ -129,21 +129,21 @@ const ThresholdChart = ({
             }}
           />
           <LinePath
-            data={cityTemperature}
             curve={curveBasis}
+            data={datum}
             x={(d) => timeScale(date(d)) ?? 0}
             y={(d) => yScale(neg(d)) ?? 0}
-            stroke="#fff"
+            stroke={colorN}
             strokeWidth={1.5}
             strokeOpacity={0.8}
             strokeDasharray="1,2"
           />
           <LinePath
-            data={cityTemperature}
+            data={datum}
             curve={curveBasis}
             x={(d) => timeScale(date(d)) ?? 0}
             y={(d) => yScale(pos(d)) ?? 0}
-            stroke="#fff"
+            stroke={colorP}
             strokeWidth={1.5}
           />
         </Group>
