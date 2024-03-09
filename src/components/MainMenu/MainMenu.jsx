@@ -8,8 +8,8 @@ function MainMenu() {
     <>
       <CSSTransition
         in={menuOpen}
-        timeout={300}
-        className="animate__animated main-menu fixed z-50 top-0 right-0 w-full max-w-96 bg-primary text-white px-6 py-3 h-full"
+        timeout={500}
+        className="animate__animated main-menu animate__faster fixed z-50 top-0 right-0 w-full max-w-96 bg-primary text-white px-6 py-3 h-full"
         classNames={{
           enterActive: "animate__slideInRight",
           exitActive: "animate__slideOutRight",

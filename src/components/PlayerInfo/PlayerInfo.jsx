@@ -12,7 +12,7 @@ const PlayerInfo = ({ player }) => {
             <th>Nationality</th>
             <td>
               {player.nationality && (
-                <Flag country={player.nationality} size="64" />
+                <Flag country={player.nationality} size={64} />
               )}
             </td>
           </tr>

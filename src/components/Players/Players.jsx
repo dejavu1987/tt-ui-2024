@@ -61,7 +61,7 @@ const Players = ({ filters, history }) => {
                 <td>{player.name}</td>
                 <td>
                   {player.nationality && (
-                    <Flag country={player.nationality} size="32" />
+                    <Flag country={player.nationality} size={32} />
                   )}
                 </td>
                 <td>

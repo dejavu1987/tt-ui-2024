@@ -56,8 +56,8 @@ class CreateMatch extends Component {
       <div className="main-container">
         <form onSubmit={this.handleSubmit}>
           <h2 className="h2">New match</h2>
-          <div className="flex gap-6 mb-6">
-            <div className="w-3/4 flex flex-col gap-4">
+          <div className="flex flex-col gap-6 mb-6 md:flex-row">
+            <div className="md:w-3/4 flex flex-col gap-4">
               <div className="flex gap-4">
                 <input
                   name="event"
@@ -189,10 +189,11 @@ class CreateMatch extends Component {
                 )}
               </div>
             </div>
-            <div className="w-1/4 flex flex-col gap-2">
+            <div className="md:w-1/4 flex md:flex-col gap-2">
               <label htmlFor="">
                 Game of:{" "}
                 <input
+                  className="w-16"
                   name="gameOf"
                   label="Game of"
                   icon="greater-than-equal"
@@ -204,6 +205,7 @@ class CreateMatch extends Component {
               <label htmlFor="">
                 Best of:{" "}
                 <input
+                  className="w-16"
                   name="bestOf"
                   label="Best of"
                   icon="gavel"
@@ -215,6 +217,7 @@ class CreateMatch extends Component {
               <label htmlFor="">
                 Serves:{" "}
                 <input
+                  className="w-16"
                   name="serves"
                   label="Serves"
                   icon="table-tennis"
