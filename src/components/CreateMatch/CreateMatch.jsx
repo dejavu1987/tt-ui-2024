@@ -1,6 +1,6 @@
 import { Component } from "react";
 import configs from "../../configs";
-import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
+import { withRouter } from "react-router-dom";
 
 /**
  * Create match form
