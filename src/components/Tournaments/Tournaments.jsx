@@ -1,9 +1,8 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import { Link } from "react-router-dom";
 import configs from "../../configs";
 
 const API = configs.apiUrl + "/api/tournaments";
-const DEVICE_API = configs.apiUrl + "/api/device";
 
 class Tournaments extends Component {
   constructor(props) {
@@ -12,23 +11,6 @@ class Tournaments extends Component {
     this.state = {
       tournaments: [],
     };
-
-    this.joinWithDeviceHandler = this.joinWithDeviceHandler.bind(this);
-  }
-
-  joinWithDeviceHandler(tournamentId) {
-    console.log(tournamentId);
-    const defaultDevice = localStorage.getItem("defaultDevice");
-    fetch(DEVICE_API + "/" + defaultDevice, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ linkedMatch: tournamentId }),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
   }
 
   componentDidMount() {

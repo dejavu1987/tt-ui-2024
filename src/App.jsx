@@ -1,6 +1,8 @@
 import { Component } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
 
-import { Route } from "react-router-dom";
+import MainLayout from "./layouts/MainLayout";
+import VersusPage from "./pages/Versus/VersusPage";
 import CreateMatch from "./components/CreateMatch/CreateMatch";
 import Matches from "./components/Matches/Matches";
 import Match from "./components/Match/Match";
@@ -9,15 +11,13 @@ import Players from "./components/Players/Players";
 import Tournaments from "./components/Tournaments/Tournaments";
 import Tournament from "./components/Tournament/Tournament";
 import Player from "./components/Player/Player";
-import { socketSubscriber } from "./SocketSubscriber";
-import configs from "./configs";
-import VersusPage from "./pages/Versus/VersusPage";
-import MainLayout from "./layouts/MainLayout";
 import PlayerForm from "./components/PlayerForm/PlayerForm";
 import { Proxy } from "./components/Proxy/Proxy";
-import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
+
+import configs from "./configs";
 const API_PLAYERS = configs.apiUrl + "/api/players";
 
+import { socketSubscriber } from "./SocketSubscriber";
 class App extends Component {
   constructor(props) {
     super(props);

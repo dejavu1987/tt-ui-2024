@@ -1,4 +1,6 @@
 import { useHistory } from "react-router";
+import PropTypes from "prop-types";
+
 import Slider from "react-slick";
 import Versus from "../Versus/Versus";
 import MatchStats from "../MatchStats/MatchStats";
@@ -176,6 +178,8 @@ const MatchOver = ({ match }) => {
   );
 };
 
-MatchOver.propTypes = {};
+MatchOver.propTypes = {
+  match: PropTypes.object.isRequired,
+};
 
 export default MatchOver;

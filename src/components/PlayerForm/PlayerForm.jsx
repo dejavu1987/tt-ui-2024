@@ -1,30 +1,24 @@
-import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import configs from "../../configs";
 import { useHistory } from "react-router";
 import { useForm } from "react-hook-form";
 
-const PlayerForm = ({ id }) => {
-  const { register, handleSubmit, formState } = useForm();
-  const [player, setPlayer] = useState({});
-  const history = useHistory();
-  const API = configs.apiUrl + "/api/player";
+const API = configs.apiUrl + "/api/player";
 
-  useEffect(() => {
-    if (id) {
-      console.log({ id });
-      fetch(`${API}/${id}`)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log({ data });
-          setPlayer(data.player);
-        });
-    }
-  }, [id]);
+const PlayerForm = ({ id }) => {
+  const { register, handleSubmit, formState } = useForm({
+    defaultValues: id
+      ? async () =>
+          fetch(`${API}/${id}`)
+            .then((response) => response.json())
+            .then((data) => {
+              return data.player;
+            })
+      : {},
+  });
+  const history = useHistory();
 
   function onSubmit(data) {
-    console.log({ data });
-
     fetch(`${configs.apiUrl}/api/player${id ? `/${id}` : ""}`, {
       method: "POST",
       headers: {
@@ -46,72 +40,58 @@ const PlayerForm = ({ id }) => {
         console.log({ e });
       });
   }
-  // if (id && !player.id) return "";
+
   return (
     <div className="main-container">
-      <h2 className="h2">{(id && `Edit ${player.name}`) || "Add player"}</h2>
+      <h2 className="h2">{(id && `Edit player`) || "Add player"}</h2>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 max-w-screen-sm mx-auto">
           <div className="border flex flex-col p-4">
-            <label htmlFor="id">
-              ID:{" "}
-              <input type="text" defaultValue={player.id} {...register("id")} />
+            <label className="flex w-full my-1 justify-between" htmlFor="id">
+              ID: <input className="w-2/3" type="text" {...register("id")} />
               {formState.errors.id && <span>This field is required</span>}
             </label>
-            <label htmlFor="uuid">
+            <label className="flex w-full my-1 justify-between" htmlFor="uuid">
               UUID:{" "}
-              <input
-                type="text"
-                defaultValue={player.uuid}
-                {...register("uuid")}
-              />
+              <input className="w-2/3" type="text" {...register("uuid")} />
               {formState.errors.uuid && <span>This field is required</span>}
             </label>
           </div>
           <div className="border flex flex-col p-4">
-            <label>
+            <label className="flex w-full my-1 justify-between">
               Name:{" "}
-              <input
-                type="text"
-                defaultValue={player.name}
-                {...register("name")}
-              />
+              <input className="w-2/3" type="text" {...register("name")} />
               {formState.errors.name && <span>This field is required</span>}
             </label>
-            <label>
+            <label className="flex w-full my-1 justify-between">
               Photo:{" "}
-              <input
-                type="text"
-                name="photo"
-                label="Url to a photo"
-                defaultValue={player.photo}
-                {...register("photo")}
-              />
+              <input className="w-2/3" type="text" {...register("photo")} />
             </label>
-            <label>
+            <label className="flex w-full my-1 justify-between">
               Full Name:
-              <input
-                type="text"
-                id="fullName"
-                defaultValue={player.fullName}
-                {...register("fullName")}
-              />
+              <input className="w-2/3" type="text" {...register("fullName")} />
             </label>
 
-            <label htmlFor="profession">
+            <label
+              className="flex w-full my-1 justify-between"
+              htmlFor="profession"
+            >
               Profession:{" "}
               <input
+                className="w-2/3"
                 type="text"
-                defaultValue={player.profession}
                 {...register("profession")}
               />
             </label>
-            <label htmlFor="nationality">
+            <label
+              className="flex w-full my-1 justify-between"
+              htmlFor="nationality"
+            >
               Nationality:{" "}
               <input
+                className="w-2/3"
                 type="text"
-                defaultValue={player.nationality}
                 {...register("nationality", {
                   pattern: /^[a-z]{2}$/,
                 })}
@@ -122,16 +102,21 @@ const PlayerForm = ({ id }) => {
             </label>
           </div>
           <div className="border flex flex-col p-4">
-            <label htmlFor="hobbies">
+            <label
+              className="flex w-full my-1 justify-between"
+              htmlFor="hobbies"
+            >
               Hobbies:{" "}
               <textarea
-                defaultValue={player.hobbies}
+                className="border w-2/3 "
                 rows={4}
                 {...register("hobbies")}
               ></textarea>
             </label>
           </div>
-          <input type="submit" value="Submit" />
+          <button className="button" type="submit">
+            Save
+          </button>
         </div>
       </form>
     </div>
