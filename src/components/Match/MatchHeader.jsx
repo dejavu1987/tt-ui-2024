@@ -18,7 +18,7 @@ const MatchHeader = ({ event, stage, gameOf, bestOf }) => {
           className="fill-secondary"
         />
       </svg>
-      <div className="col text-center">
+      <div className="col text-center max-w-[482px]">
         <h2 className="match-title h2">{event}</h2>
         <h4 className="match-stage">{stage}</h4>
         <h6 className="match-config">

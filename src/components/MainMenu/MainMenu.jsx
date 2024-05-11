@@ -1,3 +1,9 @@
+import {
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/clerk-react";
 import { useState } from "react";
 import { NavLink as Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
@@ -72,6 +78,12 @@ function MainMenu() {
             </li>
           </ul>
         </nav>
+        <SignedIn>
+          <UserButton afterSignOutUrl={window.location.href} />
+        </SignedIn>
+        <SignedOut>
+          <SignInButton mode="modal" />
+        </SignedOut>
       </CSSTransition>
       <CSSTransition
         in={!menuOpen}
