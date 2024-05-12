@@ -1,48 +1,51 @@
 const translations = {
   de: {
-    and: 'und',
-    serves: 'dient',
-    versus: 'gegen',
+    and: "und",
+    serves: "dient",
+    versus: "gegen",
   },
   ru: {
-    and: 'и',
-    serves: 'подаёт',
-    versus: 'против',
+    and: "и",
+    serves: "подаёт",
+    versus: "против",
   },
   es: {
-    and: 'y',
-    serves: 'sirve',
+    and: "y",
+    serves: "sirve",
   },
   ja: {
-    and: 'そして',
-    versus: '対',
+    and: "そして",
+    versus: "対",
   },
   ko: {
-    and: '과',
-    versus: '대',
+    and: "과",
+    versus: "대",
   },
   zh: {
-    and: '和',
-    versus: '与',
+    and: "和",
+    versus: "与",
   },
   fr: {
-    and: 'et',
-    versus: 'contre',
+    and: "et",
+    versus: "contre",
   },
   it: {
-    and: 'e',
-    versus: 'contro',
+    and: "e",
+    versus: "contro",
   },
-  pt: { and: 'e' },
+  pt: { and: "e" },
   hi: {
-    and: 'और',
-    serves: 'की बारी',
-    versus: 'विरूद्ध',
+    and: "और",
+    serves: "की बारी",
+    versus: "विरूद्ध",
   },
 };
 
 const t = (string, langPrefix) => {
-  if (langPrefix === 'en' || !translations.hasOwnProperty(langPrefix))
+  if (
+    langPrefix === "en" ||
+    !Object.prototype.hasOwnProperty.call(translations, langPrefix)
+  )
     return string;
   else {
     if (translations[langPrefix][string])

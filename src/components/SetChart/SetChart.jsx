@@ -1,5 +1,3 @@
-import React from "react";
-import PropTypes from "prop-types";
 // import NVD3Chart from 'react-nvd3';
 
 const SetChart = ({ setScoreData }) => {

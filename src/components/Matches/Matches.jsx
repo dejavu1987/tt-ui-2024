@@ -82,7 +82,7 @@ class Matches extends Component {
       .then((data) => this.setState({ matches: data.matches, loaded: true }));
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const url = new URL(API),
       params = nextProps.filters;
     if (params) {

@@ -6,7 +6,6 @@ import { scaleLinear } from "@visx/scale";
 import { AxisLeft, AxisBottom } from "@visx/axis";
 import { GridRows, GridColumns } from "@visx/grid";
 import { LinearGradient } from "@visx/gradient";
-import cityTemperature from "@visx/mock-data/lib/mocks/cityTemperature";
 
 // accessors
 const date = (d) => d.i;

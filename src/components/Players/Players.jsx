@@ -12,7 +12,7 @@ const API = configs.apiUrl + "/api/players";
  * @constructor
  */
 
-const Players = ({ filters, history }) => {
+const Players = ({ history }) => {
   const [players, setPlayers] = useState([]);
 
   function handleEdit(event, player) {
@@ -30,7 +30,7 @@ const Players = ({ filters, history }) => {
       body: JSON.stringify(player),
     })
       .then((res) => res.json())
-      .then((data) => history.push("/players"));
+      .then(() => history.push("/players"));
   }
 
   useEffect(() => {

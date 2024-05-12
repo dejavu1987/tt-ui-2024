@@ -77,13 +77,13 @@ function MainMenu() {
               </Link>
             </li>
           </ul>
+          <SignedIn>
+            <UserButton afterSignOutUrl={window.location.href} />
+          </SignedIn>
+          <SignedOut>
+            <SignInButton mode="modal" />
+          </SignedOut>
         </nav>
-        <SignedIn>
-          <UserButton afterSignOutUrl={window.location.href} />
-        </SignedIn>
-        <SignedOut>
-          <SignInButton mode="modal" />
-        </SignedOut>
       </CSSTransition>
       <CSSTransition
         in={!menuOpen}
