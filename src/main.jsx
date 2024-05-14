@@ -5,10 +5,9 @@ import "animate.css";
 import "./index.scss";
 import { ClerkProvider } from "@clerk/clerk-react";
 
-const publishableKey = process.env.VITE_CLERK_PUBLISHABLE_KEY;
-
-console.log("🪵 \x1b[1m publlikey \x1b[0m");
-console.log(publishableKey);
+const publishableKey =
+  process.env.VITE_CLERK_PUBLISHABLE_KEY ||
+  "pk_test_ZnJhbmstZ29hdC00NC5jbGVyay5hY2NvdW50cy5kZXYk";
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
